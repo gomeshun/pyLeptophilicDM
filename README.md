@@ -8,7 +8,7 @@ pyLeptophilicDM uses:
 
 and other common python packages (numpy, pandas, etc.)
 
-# Class and function
+# Modules
 ## `model.py`
 Define `Model` class to descibe Leptophilic DM model.
 ## `pyleptophilicdm.py`
@@ -17,6 +17,8 @@ Implementation of Leptophilic DM model (preliminary)
 Define `Sampler` class, a wrapper class of `emcee.EnsembleSampler`, and `Analyzer` class to plot the result of `Sampler` class.
 ## `run.py`
 Example code to run MCMC sampling.
+## `graphical_prior.py`
+Define `Polygon` class, utilized to define a hard-cut prior by using a given csv file.
 
 # Other Files
 ## `hepdata...csv`
