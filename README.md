@@ -17,3 +17,12 @@ Implementation of Leptophilic DM model (preliminary)
 Define `Sampler` class, a wrapper class of `emcee.EnsembleSampler`, and `Analyzer` class to plot the result of `Sampler` class.
 ## `run.py`
 Example code to run MCMC sampling.
+
+# Other Files
+## `hepdata...csv`
+LHC constraints downloaded from [https://www.hepdata.net/record/ins1750597?version=1&table=Exclusion%20contour%20(obs)%203](https://www.hepdata.net/record/ins1750597?version=1&table=Exclusion%20contour%20(obs)%203)
+## `config.csv`
+An example file to define the configuration of Leptophilic DM model such as 
+  - parameter names (on-code or TeX)
+  - parameter prior ranges
+  - prior types
