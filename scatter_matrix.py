@@ -19,6 +19,9 @@ def scatter_matrix(
     refresh_labels=False,
     **kwds
 ):
+	'''
+	Modification of pandas.scatter_matrix.
+	'''
 
 
     def _get_marker_compat(marker):

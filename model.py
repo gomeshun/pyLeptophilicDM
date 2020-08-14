@@ -113,17 +113,21 @@ class LeptophilicDM(Model):
         upper = self.config.hi.values
         prior_type = self.config.prior.values
         
+		# Hard-cut prior
         if not np.all((lower < array) & (array < upper)):
             return -inf
         
-        
+        # LHC constraints
+		# NOTE: This is just an example. It must be updated.
         params = Series(array,index=self.param_names)
         if self.lhc_constraints.includes(params[["m_phi_L","m_chi"]].values.reshape(1,-1)):
             return -inf
         if self.lhc_constraints.includes(params[["m_phi_R","m_chi"]].values.reshape(1,-1)):
             return -inf
         
-        lnps = -np.log(array[prior_type=="log"])
+		# log-prior
+        lnps = -np.log(array[prior_type=="log"]) # d(log x) = x^-1 dx = exp(-log x) dx
+		#lnps += np.zeros(array[prior_type=="flat"].shape)
         return np.sum(lnps)
         
         
