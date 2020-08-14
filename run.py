@@ -2,7 +2,7 @@ from scipy.stats import norm
 import matplotlib.pyplot as plt
 import os
 
-from .pyleptophilicdm import LeptophilicDM
+from .model import LeptophilicDM
 from .sampler import Sampler
 
 
