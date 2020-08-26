@@ -1,0 +1,3 @@
+[submodule "pymicromegas"]
+	path = pymicromegas
+	url = git@github.com:gomeshun/PyMicrOmegas
