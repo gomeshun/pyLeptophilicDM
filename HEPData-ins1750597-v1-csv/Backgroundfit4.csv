@@ -1,0 +1,81 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t14
+#: name: Background fit 4
+#: description: Observed events and predicted post-fit background yields for the SF inclusive SRs. The model independent upper limits at 95% confidence level (CL) on the observed and expected number of beyond the SM events $S^{0.95}_{obs/exp}$ and the effective beyond the SM cross-section $\sigma^{0.95}_{obs}$ are also reported. The last row reports the $p_0$-value of the SM-only hypothesis. For SRs where the data yield is smaller than expected, the $p$-value is truncated at 0.50. The background denoted as "Other" in the Table includes the non-dominant background sources for this analysis, i.e. Z+jets, $t\bar t$+V, Higgs and Drell-Yan events. A "–" symbol indicates that the background contribution is negligible.
+#: data_file: Tab_8b_fit_SRs_SF_inc.yaml
+#: data_license:   
+#: keyword reactions: pp --> CHARGINO1 CHARGINO1 | pp --> SLEPTON SLEPTON | CHARGINO1 --> W NEUTRALINO1 | CHARGINO1 --> SLEPTON NU | CHARGINO1 -->SNU LEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],13000
+#: .,SR-SF-1J
+Bkg fit res SRs,.,stat+syst +,stat+syst -
+$m_{T2}$ [GeV],"[100,inf)",0,0
+Observed events,120,0,0
+Fitted backgrounds,124,12,-12
+Fitted $WW$,48,6,-6
+Fitted $WZ$,13.4,1.1,-1.1
+Fitted $ZZ$,22.2,1.8,-1.8
+Fitted $t\bar{t}$,16,8,-8
+Fitted single top,3.3,1.7,-1.7
+Other backgrounds,11.1,4.0,-4.0
+Fake and non-prompt leptons,10.3,1.5,-1.5
+$S^{0.95}_{\mbox{obs}}$,30.6,0,0
+$S^{0.95}_{\mbox{exp}}$,33.5,13.3,-9.3
+${\mathrm \sigma}^{0.95}_{\mbox{obs}}$ [fb],0.22,0,0
+$p_0$,0.50,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,SR-SF-1J
+Bkg fit res SRs,.,stat+syst +,stat+syst -
+$m_{T2}$ [GeV],"[160,inf)",0,0
+Observed events,29,0,0
+Fitted backgrounds,36,5,-5
+Fitted $WW$,14.1,2.1,-2.1
+Fitted $WZ$,5.2,0.6,-0.6
+Fitted $ZZ$,9.1,1.1,-1.1
+Fitted $t\bar{t}$,0.07,0.1,-0.07
+Fitted single top,--,0,0
+Other backgrounds,5.6,2.1,-2.1
+Fake and non-prompt leptons,1.80,0.34,-0.34
+$S^{0.95}_{\mbox{obs}}$,11.2,0,0
+$S^{0.95}_{\mbox{exp}}$,15.3,6.5,-4.5
+${\mathrm \sigma}^{0.95}_{\mbox{obs}}$ [fb],0.08,0,0
+$p_0$,0.50,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,SR-SF-1J
+Bkg fit res SRs,.,stat+syst +,stat+syst -
+$m_{T2}$ [GeV],"[100,120)",0,0
+Observed events,55,0,0
+Fitted backgrounds,48,8,-8
+Fitted $WW$,18.1,2.4,-2.4
+Fitted $WZ$,3.62,0.33,-0.33
+Fitted $ZZ$,4.8,0.5,-0.5
+Fitted $t\bar{t}$,14,7,-7
+Fitted single top,2.6,1.4,-1.4
+Other backgrounds,1.7,2.4,-1.7
+Fake and non-prompt leptons,3.1,0.6,-0.6
+$S^{0.95}_{\mbox{obs}}$,27.3,0,0
+$S^{0.95}_{\mbox{exp}}$,21.9,9.0,-6.2
+${\mathrm \sigma}^{0.95}_{\mbox{obs}}$ [fb],0.19,0,0
+$p_0$,0.26,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,SR-SF-1J
+Bkg fit res SRs,.,stat+syst +,stat+syst -
+$m_{T2}$ [GeV],"[120,160)",0,0
+Observed events,36,0,0
+Fitted backgrounds,40,4,-4
+Fitted $WW$,16.0,2.2,-2.2
+Fitted $WZ$,4.7,0.5,-0.5
+Fitted $ZZ$,8.2,0.9,-0.9
+Fitted $t\bar{t}$,1.6,0.8,-0.8
+Fitted single top,0.7,0.4,-0.4
+Other backgrounds,3.8,1.3,-1.3
+Fake and non-prompt leptons,5.3,0.7,-0.7
+$S^{0.95}_{\mbox{obs}}$,12.6,0,0
+$S^{0.95}_{\mbox{exp}}$,15.5,6.5,-4.2
+${\mathrm \sigma}^{0.95}_{\mbox{obs}}$ [fb],0.09,0,0
+$p_0$,0.50,0,0
+

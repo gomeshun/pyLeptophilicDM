@@ -1,0 +1,63 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t2
+#: name: Background fit 1
+#: description: Observed events and predicted background yields from the fit for the CRs. For backgrounds whose normalisation is extracted from the fit, the yield expected from the simulation before the fit is also reported. The background denoted as "Other" in the Table includes the non-dominant background sources for this analysis, i.e. Z+jets, $t\bar t$ +V, Higgs and Drell-Yan events. A "–" symbol indicates that the background contribution is negligible.
+#: data_file: Tab_5_fit_CRs.yaml
+#: data_license:   
+#: keyword reactions: pp --> CHARGINO1 CHARGINO1 | pp --> SLEPTON SLEPTON | CHARGINO1 --> W NEUTRALINO1 | CHARGINO1 --> SLEPTON NU | CHARGINO1 -->SNU LEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],13000
+#: .,CR-WW
+Bkg fit results CRs,.,stat+syst +,stat+syst -
+Observed events,962,0,0
+Fitted backgrounds,962,31,-31
+Fitted $WW$,670,60,-60
+Fitted $WZ$,11.8,0.7,-0.7
+Fitted $ZZ$,0.29,0.06,-0.06
+Fitted $t\bar{t}$,170,50,-50
+Fitted single top,88,8,-8
+Other backgrounds,0.17,0.06,-0.06
+Fake and non-prompt leptons,21,8,-8
+Simulated $WW$,528,0,0
+Simulated $WZ$,9.9,0,0
+Simulated $ZZ$,0.24,0,0
+Simulated $t\bar{t}$,210,0,0
+Simulated single top,107,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,CR-VZ
+Bkg fit results CRs,.,stat+syst +,stat+syst -
+Observed events,811,0,0
+Fitted backgrounds,811,28,-28
+Fitted $WW$,19.1,1.9,-1.9
+Fitted $WZ$,188,7,-7
+Fitted $ZZ$,577,23,-23
+Fitted $t\bar{t}$,1.8,1.3,-1.3
+Fitted single top,0.65,0.35,-0.35
+Other backgrounds,19,7,-7
+Fake and non-prompt leptons,5,6,-5
+Simulated $WW$,15.1,0,0
+Simulated $WZ$,158,0,0
+Simulated $ZZ$,487,0,0
+Simulated $t\bar{t}$,2.2,0,0
+Simulated single top,0.8,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,CR-top
+Bkg fit results CRs,.,stat+syst +,stat+syst -
+Observed events,321,0,0
+Fitted backgrounds,321,18,-18
+Fitted $WW$,5.5,2.7,-2.7
+Fitted $WZ$,0.32,0.15,-0.15
+Fitted $ZZ$,--,0,0
+Fitted $t\bar{t}$,270,16,-16
+Fitted single top,38.6,2.6,-2.6
+Other backgrounds,2.21,0.2,-0.2
+Fake and non-prompt leptons,4.2,2.2,-2.2
+Simulated $WW$,4.3,0,0
+Simulated $WZ$,0.27,0,0
+Simulated $ZZ$,--,0,0
+Simulated $t\bar{t}$,327,0,0
+Simulated single top,46.7,0,0
+

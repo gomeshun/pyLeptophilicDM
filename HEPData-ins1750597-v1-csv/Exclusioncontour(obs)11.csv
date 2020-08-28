@@ -1,0 +1,56 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t35
+#: name: Exclusion contour (obs) 11
+#: description: Observed exclusion limits on SUSY simplified models for right-handed smuon-pair production. All limits are computed at 95% CL.
+#: data_file: Fig_10_OBS_DirSlep_MM_RH.yaml
+#: data_license:   
+#: keyword reactions: pp --> SLEPTON SLEPTON | SLEPTON --> LEPTON NEUTRALINO1 | pp --> SMUON SMUON | SMUON --> MUON NEUTRALINO1
+#: keyword observables: CLS
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],13000.0
+m($\tilde{l}$) [GeV],m($\tilde{\chi}_{1}^{0}$) [GeV]
+125.4352,1
+131.3954,11.96712
+134.1259,17.30743
+147.7029,33.05554
+148.114,33.61486
+164.0103,49.49199
+164.3279,49.92229
+175.414,66.22971
+180.3177,81.30227
+180.6557,82.53714
+182.7491,98.84457
+194.3263,115.152
+196.6251,116.3935
+212.9326,122.8738
+228.4741,131.4594
+229.24,132.3366
+245.5474,143.3503
+254.7674,147.7669
+261.8549,153.3304
+278.1623,160.3023
+292.9657,164.0743
+294.4697,164.4446
+310.7771,168.234
+327.0846,173.2729
+343.392,179.08
+349.4981,180.3817
+359.6994,183.1064
+376.0069,183.8121
+392.3143,181.1329
+394.1546,180.3817
+408.6217,171.5877
+415.6416,164.0743
+424.4146,147.7669
+424.9291,146.0227
+428.8732,131.4594
+430.9592,115.152
+432.554,98.84457
+435.9457,82.53714
+439.4562,66.22971
+441.2366,55.62254
+442.303,49.92229
+444.6402,33.61486
+447.0497,17.30743
+449.6192,1
+

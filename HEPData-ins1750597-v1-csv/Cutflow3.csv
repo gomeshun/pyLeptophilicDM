@@ -1,0 +1,86 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t154
+#: name: Cutflow 3
+#: description: Cutflow  for supersymmetric model where $\tilde\ell\tilde\ell$ are produced. Only $\tilde{e}$ and $\tilde{\mu}$ are considered in this model. The masses of the two sleptons are 400 GeV, while the mass of $\tilde{\chi}_1^{0}$ is 200 GeV. The numbers are normalised to the luminosity of 139~fb$^{-1}$.
+#: data_file: Tab_16_cutflow_SlepSlep_400_200.yaml
+#: keyword reactions: pp --> SLEPTON SLEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],13000
+"Cutflow selection $m({\tilde{l}^\pm}, {\tilde{\chi}^0_1})=(400,200)$ [GeV]",Raw events
+----------------- PRESELECTION -----------------, 
+Total events,6303
+"Events with $p_T^{l_1,l_2}>10 [GeV]$",5515
+Trigger Passing,4599
+OS signal leptons,4181
+"$p_T^{l_1,l_2}>25$ [GeV]",4143
+"$m_{l_1,l_2}>25$ [GeV]",4132
+$n_{b-tagged jets}=0$,3941
+ , 
+-----------------   SR-DF-0J   -----------------, 
+Different flavour & $n_{non-b-tagged-jets}$=0,3
+"$m_{l_1,l_2}>100$ [GeV]",3
+$E_T^{Miss}$ > 110 [GeV],2
+$E_T^{Miss}$ significance > 10,1
+$m_{T2}>100$ [GeV],1
+ , 
+-----------------   SR-DF-1J   -----------------, 
+Different flavour & $n_{non-b-tagged-jets}$=1,2
+"$m_{l_1,l_2}>100$ [GeV]",1
+$E_T^{Miss}$ > 110 [GeV],-
+$E_T^{Miss}$ significance > 10,-
+$m_{T2}>100$ [GeV],-
+ , 
+-----------------   SR-SF-0J   -----------------, 
+Same flavour & $n_{non-b-tagged-jets}$=0,1974
+"$m_{l_1,l_2}>121.2$ [GeV]",1801
+$E_T^{Miss}$ > 110 [GeV],1420
+$E_T^{Miss}$ significance > 10,1298
+$m_{T2}>100$ [GeV],1097
+ , 
+-----------------   SR-SF-1J   -----------------, 
+Same flavour & $n_{non-b-tagged-jets}$=1,1255
+"$m_{l_1,l_2}>121.2$ [GeV]",1146
+$E_T^{Miss}$ > 110 [GeV],913
+$E_T^{Miss}$ significance > 10,789
+$m_{T2}>100$ [GeV],657
+
+#: $\sqrt{s}$ [GeV],13000
+"Cutflow selection $m({\tilde{l}^\pm}, {\tilde{\chi}^0_1})=(400,200)$ [GeV]",Events for 139 fb$^{-1}$
+----------------- PRESELECTION -----------------, 
+Total events,503
+"Events with $p_T^{l_1,l_2}>10 [GeV]$",425
+Trigger Passing,352
+OS signal leptons,318
+"$p_T^{l_1,l_2}>25$ [GeV]",316
+"$m_{l_1,l_2}>25$ [GeV]",315
+$n_{b-tagged jets}=0$,298
+ , 
+-----------------   SR-DF-0J   -----------------, 
+Different flavour & $n_{non-b-tagged-jets}$=0,0.17
+"$m_{l_1,l_2}>100$ [GeV]",0.17
+$E_T^{Miss}$ > 110 [GeV],0.10
+$E_T^{Miss}$ significance > 10,0.06
+$m_{T2}>100$ [GeV],0.06
+ , 
+-----------------   SR-DF-1J   -----------------, 
+Different flavour & $n_{non-b-tagged-jets}$=1,0.12
+"$m_{l_1,l_2}>100$ [GeV]",0.01
+$E_T^{Miss}$ > 110 [GeV],-
+$E_T^{Miss}$ significance > 10,-
+$m_{T2}>100$ [GeV],-
+ , 
+-----------------   SR-SF-0J   -----------------, 
+Same flavour & $n_{non-b-tagged-jets}$=0,136.0
+"$m_{l_1,l_2}>121.2$ [GeV]",123.5
+$E_T^{Miss}$ > 110 [GeV],97.5
+$E_T^{Miss}$ significance > 10,88.5
+$m_{T2}>100$ [GeV],75.1
+ , 
+-----------------   SR-SF-1J   -----------------, 
+Same flavour & $n_{non-b-tagged-jets}$=1,99.2
+"$m_{l_1,l_2}>121.2$ [GeV]",90.3
+$E_T^{Miss}$ > 110 [GeV],71.8
+$E_T^{Miss}$ significance > 10,61.3
+$m_{T2}>100$ [GeV],51.1
+

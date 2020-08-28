@@ -1,0 +1,75 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t4
+#: name: VR kinematics 1
+#: description: Distributions of $m_{T2}$ in VR-top-low for data and the estimated SM backgrounds. The normalisation factors extracted from the corresponding CRs are used to rescale the $t\bar t$, single top, WW, WZ and ZZ backgrounds. The fake and non-prompt leptons background (FNP) is calculated using the data-driven matrix method. The uncertainty band includes all sources of systematic and statistical errors and the last bin includes the overflow.
+#: data_file: Fig_3a_Kinem_MT2_VRtopL.yaml
+#: data_license:   
+#: keyword reactions: pp --> CHARGINO1 CHARGINO1 | pp --> SLEPTON SLEPTON | CHARGINO1 --> W NEUTRALINO1 | CHARGINO1 --> SLEPTON NU | CHARGINO1 -->SNU LEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Data
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat +,stat -
+85.0,80.0,90.0,130,12,-11
+95.0,90.0,100.0,60,9,-8
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Total Bkg
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,137.6,13.4,-13.4
+95.0,90.0,100.0,47.9,4.9,-4.9
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,WW
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,1.6,0.4,-0.4
+95.0,90.0,100.0,0.5,0.2,-0.2
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,WZ
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,0.0,0.0,-0.0
+95.0,90.0,100.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,ttbar
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,116.4,11.8,-11.8
+95.0,90.0,100.0,40.1,4.7,-4.7
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Singletop
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,18.0,2.2,-2.2
+95.0,90.0,100.0,6.3,1.0,-1.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Others
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,0.18,0.04,-0.04
+95.0,90.0,100.0,0.1,0.1,-0.1
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,FNP
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,1.3,1.0,-1.0
+95.0,90.0,100.0,0.9,0.4,-0.4
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,m($\tilde{\chi}^{\pm}_1$,$\tilde{l}^{\pm}$,$\tilde{\chi}^{0}_1$)=(600,300,1)GeV
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,0.0,0.0,-0.0
+95.0,90.0,100.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,m($\tilde{\chi}^{\pm}_1$,$\tilde{\chi}^{0}_1$)=(300,50)GeV
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,0.0,0.0,-0.0
+95.0,90.0,100.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,m($\tilde{l}^{\pm}$,$\tilde{\chi}^{0}_1$)=(400,200)GeV
+$m_{T2}$ [GeV],$m_{T2}$ [GeV] LOW,$m_{T2}$ [GeV] HIGH,N,stat+syst +,stat+syst -
+85.0,80.0,90.0,0.0,0.0,-0.0
+95.0,90.0,100.0,0.0,0.0,-0.0
+

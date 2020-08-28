@@ -1,0 +1,105 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t9
+#: name: VR kinematics 6
+#: description: Distributions of $E_T^{miss}$ significance in VR-top-WW for data and the estimated SM backgrounds. The normalisation factors extracted from the corresponding CRs are used to rescale the $t\bar t$, single top, WW, WZ and ZZ backgrounds. The fake and non-prompt leptons background (FNP) is calculated using the data-driven matrix method. The uncertainty band includes all sources of systematic and statistical errors and the last bin includes the overflow.
+#: data_file: Fig_3f_Kinem_METsig_VRtopWW.yaml
+#: data_license:   
+#: keyword reactions: pp --> CHARGINO1 CHARGINO1 | pp --> SLEPTON SLEPTON | CHARGINO1 --> W NEUTRALINO1 | CHARGINO1 --> SLEPTON NU | CHARGINO1 -->SNU LEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Data
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat +,stat -
+5.625,5.0,6.25,235,16,-15
+6.875,6.25,7.5,433,22,-21
+8.125,7.5,8.75,240,16,-15
+9.375,8.75,10.0,45,8,-7
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Total Bkg
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,217.1,19.2,-19.2
+6.875,6.25,7.5,397.2,32.1,-32.1
+8.125,7.5,8.75,209.6,16.8,-16.8
+9.375,8.75,10.0,28.9,3.4,-3.4
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,WW
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,4.3,0.9,-0.9
+6.875,6.25,7.5,7.9,1.3,-1.3
+8.125,7.5,8.75,3.5,0.6,-0.6
+9.375,8.75,10.0,0.4,0.1,-0.1
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,WZ
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,0.2,0.1,-0.1
+6.875,6.25,7.5,0.2,0.1,-0.1
+8.125,7.5,8.75,0.1,0.1,-0.1
+9.375,8.75,10.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,ZZ
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,0.0,0.0,-0.0
+6.875,6.25,7.5,0.0,0.0,-0.0
+8.125,7.5,8.75,0.0,0.0,-0.0
+9.375,8.75,10.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,ttbar
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,172.1,16.2,-16.2
+6.875,6.25,7.5,301.7,25.5,-25.5
+8.125,7.5,8.75,157.8,13.5,-13.5
+9.375,8.75,10.0,21.9,2.9,-2.9
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Singletop
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,40.2,4.8,-4.8
+6.875,6.25,7.5,87.1,7.5,-7.5
+8.125,7.5,8.75,47.8,4.3,-4.3
+9.375,8.75,10.0,6.6,1.6,-1.6
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,Others
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,0.1,0.1,-0.1
+6.875,6.25,7.5,0.2,0.1,-0.1
+8.125,7.5,8.75,0.07,0.04,-0.04
+9.375,8.75,10.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,FNP
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,0.4,1.1,-0.4
+6.875,6.25,7.5,0.0,1.0,-1.0
+8.125,7.5,8.75,0.3,1.1,-0.3
+9.375,8.75,10.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,m($\tilde{\chi}^{\pm}_1$,$\tilde{l}^{\pm}$,$\tilde{\chi}^{0}_1$)=(600,300,1)GeV
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,0.0,0.0,-0.0
+6.875,6.25,7.5,0.0,0.0,-0.0
+8.125,7.5,8.75,0.0,0.0,-0.0
+9.375,8.75,10.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,m($\tilde{\chi}^{\pm}_1$,$\tilde{\chi}^{0}_1$)=(300,50)GeV
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,0.0,0.0,-0.0
+6.875,6.25,7.5,0.0,0.0,-0.0
+8.125,7.5,8.75,0.0,0.0,-0.0
+9.375,8.75,10.0,0.0,0.0,-0.0
+
+#: $\sqrt{s}$ [GeV],,,13000.0
+#: .,,,m($\tilde{l}^{\pm}$,$\tilde{\chi}^{0}_1$)=(400,200)GeV
+$E_T^{miss}$ significance,$E_T^{miss}$ significance LOW,$E_T^{miss}$ significance HIGH,N,stat+syst +,stat+syst -
+5.625,5.0,6.25,0.0,0.0,-0.0
+6.875,6.25,7.5,0.0,0.0,-0.0
+8.125,7.5,8.75,0.0,0.0,-0.0
+9.375,8.75,10.0,0.0,0.0,-0.0
+

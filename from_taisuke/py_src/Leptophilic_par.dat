@@ -1,0 +1,11 @@
+# Parameters of leptophilic model
+# GeV unit (m_phi_L has squared mass dimension)
+m_phi_L  46000
+m_phi_R  24000
+m_chi    90
+A        -70
+y_L      0.1
+y_R      0.1
+laphiLH1 0.1
+laphiLH2 0.02
+laphiRH  0.2

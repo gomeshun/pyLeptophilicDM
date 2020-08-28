@@ -1,0 +1,117 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t3
+#: name: Background fit 2
+#: description: Observed events and predicted post-fit background yields in the VRs. For backgrounds whose normalisation is extracted from the fit in the CRs, the yield expected from the simulation before the fit is also reported. The background denoted as "Other" includes the non-dominant background sources for this analysis, i.e. Z+jets, $t\bar t$ +V, Higgs and Drell-Yan events. A "–" symbol indicates that the background contribution is negligible.
+#: data_file: Tab_6_fit_VRs.yaml
+#: data_license:   
+#: keyword reactions: pp --> CHARGINO1 CHARGINO1 | pp --> SLEPTON SLEPTON | CHARGINO1 --> W NEUTRALINO1 | CHARGINO1 --> SLEPTON NU | CHARGINO1 -->SNU LEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],13000
+#: .,VR-WW-0J
+Bkg fit results VRs,.,stat+syst +,stat+syst -
+Observed events,2742,0,0
+Fitted backgrounds,2760,120,-120
+Fitted $WW$,1550,150,-150
+Fitted $WZ$,34.2,2.0,-2.0
+Fitted $ZZ$,0.50,0.06,-0.06
+Fitted $t\bar{t}$,790,110,-110
+Fitted single top,336,32,-32
+Other backgrounds,0.92,0.3,-0.3
+Fake and non-prompt leptons,44,23,-23
+Simulated $WW$,1230,0,0
+Simulated $WZ$,28.8,0,0
+Simulated $ZZ$,0.42,0,0
+Simulated $t\bar{t}$,960,0,0
+Simulated single top,406,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,VR-WW-1J
+Bkg fit results VRs,.,stat+syst +,stat+syst -
+Observed events,2671,0,0
+Fitted backgrounds,2840,250,-250
+Fitted $WW$,990,120,-120
+Fitted $WZ$,27.0,2.3,-2.3
+Fitted $ZZ$,0.39,0.07,-0.07
+Fitted $t\bar{t}$,1400,270,-270
+Fitted single top,380,40,-40
+Other backgrounds,2.1,0.5,-0.5
+Fake and non-prompt leptons,38,21,-21
+Simulated $WW$,790,0,0
+Simulated $WZ$,22.8,0,0
+Simulated $ZZ$,0.33,0,0
+Simulated $t\bar{t}$,1700,0,0
+Simulated single top,462,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,VR-VZ
+Bkg fit results VRs,.,stat+syst +,stat+syst -
+Observed events,464,0,0
+Fitted backgrounds,420,40,-40
+Fitted $WW$,17.6,2.2,-2.2
+Fitted $WZ$,99,9,-9
+Fitted $ZZ$,268,25,-25
+Fitted $t\bar{t}$,10.5,3.2,-3.2
+Fitted single top,2.2,1.4,-1.4
+Other backgrounds,21,27,-21
+Fake and non-prompt leptons,0.2,2.1,-0.2
+Simulated $WW$,14.0,0,0
+Simulated $WZ$,84,0,0
+Simulated $ZZ$,226,0,0
+Simulated $t\bar{t}$,13,0,0
+Simulated single top,2.6,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,VR-top-low
+Bkg fit results VRs,.,stat+syst +,stat+syst -
+Observed events,190,0,0
+Fitted backgrounds,185,17,-17
+Fitted $WW$,2.1,0.7,-0.7
+Fitted $WZ$,0.05,0.17,-0.05
+Fitted $ZZ$,--,0,0
+Fitted $t\bar{t}$,157,15,-15
+Fitted single top,24.3,2.6,-2.6
+Other backgrounds,0.28,0.06,-0.06
+Fake and non-prompt leptons,2.3,1.4,-1.4
+Simulated $WW$,1.6,0,0
+Simulated $WZ$,0.04,0,0
+Simulated $ZZ$,--,0,0
+Simulated $t\bar{t}$,190,0,0
+Simulated single top,29.4,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,VR-top-high
+Bkg fit results VRs,.,stat+syst +,stat+syst -
+Observed events,50,0,0
+Fitted backgrounds,53,7,-7
+Fitted $WW$,2.6,1.4,-1.4
+Fitted $WZ$,0.2,0.6,-0.2
+Fitted $ZZ$,--,0,0
+Fitted $t\bar{t}$,40,7,-7
+Fitted single top,4.6,1.4,-1.4
+Other backgrounds,3.20,0.2,-0.2
+Fake and non-prompt leptons,1.8,0.5,-0.5
+Simulated $WW$,2.0,0,0
+Simulated $WZ$,0.1,0,0
+Simulated $ZZ$,--,0,0
+Simulated $t\bar{t}$,49,0,0
+Simulated single top,5.6,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,VR-top-WW
+Bkg fit results VRs,.,stat+syst +,stat+syst -
+Observed events,953,0,0
+Fitted backgrounds,850,80,-80
+Fitted $WW$,16.1,2.5,-2.5
+Fitted $WZ$,0.53,0.13,-0.13
+Fitted $ZZ$,0.01,0.03,-0.01
+Fitted $t\bar{t}$,650,70,-70
+Fitted single top,182,15,-15
+Other backgrounds,0.39,0.11,-0.11
+Fake and non-prompt leptons,--,0,0
+Simulated $WW$,12.8,0,0
+Simulated $WZ$,0.45,0,0
+Simulated $ZZ$,0.01,0,0
+Simulated $t\bar{t}$,790,0,0
+Simulated single top,220,0,0
+

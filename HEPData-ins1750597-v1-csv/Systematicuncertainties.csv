@@ -1,0 +1,81 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t10
+#: name: Systematic uncertainties
+#: description: Breakdown of the dominant systematic uncertainties on background estimates in the inclusive SRs requiring $m_{T2}$>100 GeV after performing the profile likelihood fit. Note that the individual uncertainties can be correlated, and do not necessarily add up quadratically to the total background uncertainty. The percentages show the size of the uncertainty relative to the total expected background. "Top theoretical uncertainties" refers to $t\bar t$ theoretical uncertainties and the uncertainty associated to $Wt-t\bar t$ interference added quadratically.
+#: data_file: Tab_7_SR_uncert.yaml
+#: data_license:   
+#: keyword reactions: pp --> CHARGINO1 CHARGINO1 | pp --> SLEPTON SLEPTON | CHARGINO1 --> W NEUTRALINO1 | CHARGINO1 --> SLEPTON NU | CHARGINO1 -->SNU LEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],13000
+,"SR-DF-0J-[100,inf)"
+Total background expectation,96
+Total systematic uncertainties,15%
+MC statistical uncertainties,3%
+WW normalisation,7%
+VZ normalisation,<1%
+$t\bar t$ normalisation,1%
+Diboson theoretical uncertainties,7%
+Top theoretical uncertainties,7%
+$E_T^{miss}$ modelling,1%
+Jet energy scale,2%
+Jet energy resolution,1%
+Pile-up reweighting,<1%
+b-tagging,<1%
+Lepton modelling,1%
+Fake and non-prompt leptons,<1%
+
+#: $\sqrt{s}$ [GeV],13000
+,"SR-DF-1J-[100,inf)"
+Total background expectation,75
+Total systematic uncertainties,12%
+MC statistical uncertainties,3%
+WW normalisation,6%
+VZ normalisation,<1%
+$t\bar t$ normalisation,2%
+Diboson theoretical uncertainties,7%
+Top theoretical uncertainties,8%
+$E_T^{miss}$ modelling,1%
+Jet energy scale,3%
+Jet energy resolution,2%
+Pile-up reweighting,1%
+b-tagging,2%
+Lepton modelling,1%
+Fake and non-prompt leptons,1%
+
+#: $\sqrt{s}$ [GeV],13000
+,"SR-SF-0J-[100,inf)"
+Total background expectation,144
+Total systematic uncertainties,8%
+MC statistical uncertainties,2%
+WW normalisation,4%
+VZ normalisation,1%
+$t\bar t$ normalisation,<1%
+Diboson theoretical uncertainties,4%
+Top theoretical uncertainties,3%
+$E_T^{miss}$ modelling,<1%
+Jet energy scale,2%
+Jet energy resolution,1%
+Pile-up reweighting,<1%
+b-tagging,<1%
+Lepton modelling,1%
+Fake and non-prompt leptons,1%
+
+#: $\sqrt{s}$ [GeV],13000
+,SR-SF-1J-inc100
+Total background expectation,124
+Total systematic uncertainties,10%
+MC statistical uncertainties,3%
+WW normalisation,3%
+VZ normalisation,1%
+$t\bar t$ normalisation,1%
+Diboson theoretical uncertainties,3%
+Top theoretical uncertainties,6%
+$E_T^{miss}$ modelling,2%
+Jet energy scale,2%
+Jet energy resolution,2%
+Pile-up reweighting,<1%
+b-tagging,1%
+Lepton modelling,3%
+Fake and non-prompt leptons,1%
+

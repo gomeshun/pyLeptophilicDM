@@ -1,0 +1,171 @@
+#: table_doi: 10.17182/hepdata.89413.v1/t37
+#: name: Background fit 7
+#: description: Observed events and predicted background yields from the fit in the binned DF SRs with $n_{non-b-tagged jets}=0$. For backgrounds whose normalisation is extracted from the fit in the CRs, the yield expected from the simulation before the fit is also reported. The background denoted as "Other" in the Table includes the non-dominant background sources for this analysis, i.e. Z+jets, $t\bar t$ +V, Higgs and Drell-Yan events. A "–" symbol indicates that the background contribution is negligible.
+#: data_file: Tab_10_fit_SR_DF_0J_binned.yaml
+#: data_license:   
+#: keyword reactions: pp --> CHARGINO1 CHARGINO1 | pp --> SLEPTON SLEPTON | CHARGINO1 --> W NEUTRALINO1 | CHARGINO1 --> SLEPTON NU | CHARGINO1 -->SNU LEPTON | SLEPTON --> LEPTON NEUTRALINO1
+#: keyword observables: N
+#: keyword phrases: Proton-Proton Scattering | SUSY | Supersymmetry | Electroweak | Chargino | Slepton
+#: keyword cmenergies: 13000.0
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[100,105]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,14,0,0
+Fitted backgrounds,14,4,-4
+Fitted $WW$,6.7,1.8,-1.8
+Fitted $WZ$,0.12,0.05,-0.05
+Fitted $ZZ$,0.05,0.18,-0.05
+Fitted $t\bar{t}$,4.3,2.5,-2.5
+Fitted single top,1.6,1.0,-1.0
+Other backgrounds,0.02,0.01,-0.01
+Fake and non-prompt leptons,1.37,0.18,-0.18
+Simulated $WW$,5.3,0,0
+Simulated $WZ$,0.10,0,0
+Simulated $ZZ$,0.04,0,0
+Simulated $t\bar{t}$,5.2,0,0
+Simulated single top,2.0,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[105,110]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,14,0,0
+Fitted backgrounds,11.3,2.9,-2.9
+Fitted $WW$,7.9,1.9,-1.9
+Fitted $WZ$,0.21,0.07,-0.07
+Fitted $ZZ$,0.00,0.01,-0.0
+Fitted $t\bar{t}$,3.0,1.7,-1.7
+Fitted single top,0.2,0.4,-0.2
+Other backgrounds,0.00,0.01,-0.0
+Fake and non-prompt leptons,<0.23,0,0
+Simulated $WW$,6.2,0,0
+Simulated $WZ$,0.18,0,0
+Simulated $ZZ$,<0.04,0,0
+Simulated $t\bar{t}$,3.7,0,0
+Simulated single top,0.3,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[110,120]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,19,0,0
+Fitted backgrounds,20,4,-4
+Fitted $WW$,14.0,1.7,-1.7
+Fitted $WZ$,0.33,0.11,-0.11
+Fitted $ZZ$,0.01,0.04,-0.01
+Fitted $t\bar{t}$,4.1,2.1,-2.1
+Fitted single top,1.5,0.8,-0.8
+Other backgrounds,0.06,0.02,-0.02
+Fake and non-prompt leptons,0.30,0.15,-0.15
+Simulated $WW$,11.01,0,0
+Simulated $WZ$,0.27,0,0
+Simulated $ZZ$,0.01,0,0
+Simulated $t\bar{t}$,4.9,0,0
+Simulated single top,1.8,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[120,140]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,16,0,0
+Fitted backgrounds,21.7,3.0,-3.0
+Fitted $WW$,18.4,2.3,-2.3
+Fitted $WZ$,0.29,0.04,-0.04
+Fitted $ZZ$,<0.04,0,0
+Fitted $t\bar{t}$,1.9,1.1,-1.1
+Fitted single top,0.42,0.25,-0.25
+Other backgrounds,0.06,0.04,-0.04
+Fake and non-prompt leptons,0.59,0.11,-0.11
+Simulated $WW$,14.6,0,0
+Simulated $WZ$,0.24,0,0
+Simulated $ZZ$,<0.04,0,0
+Simulated $t\bar{t}$,2.3,0,0
+Simulated single top,0.51,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[140,160]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,11,0,0
+Fitted backgrounds,11.0,2.0,-2.0
+Fitted $WW$,10.5,1.9,-1.9
+Fitted $WZ$,0.18,0.04,-0.04
+Fitted $ZZ$,<0.04,0,0
+Fitted $t\bar{t}$,0.24,0.19,-0.19
+Fitted single top,--,0,0
+Other backgrounds,0.03,0.03,-0.03
+Fake and non-prompt leptons,<0.19,0,0
+Simulated $WW$,8.3,0,0
+Simulated $WZ$,0.15,0,0
+Simulated $ZZ$,<0.04,0,0
+Simulated $t\bar{t}$,0.29,0,0
+Simulated single top,--,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[160,180]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,8,0,0
+Fitted backgrounds,6.3,0.9,-0.9
+Fitted $WW$,6.2,0.8,-0.8
+Fitted $WZ$,0.10,0.03,-0.03
+Fitted $ZZ$,<0.04,0,0
+Fitted $t\bar{t}$,--,0,0
+Fitted single top,--,0,0
+Other backgrounds,0.04,0.01,-0.01
+Fake and non-prompt leptons,0.00,0.02,-0.0
+Simulated $WW$,4.9,0,0
+Simulated $WZ$,0.09,0,0
+Simulated $ZZ$,<0.04,0,0
+Simulated $t\bar{t}$,--,0,0
+Simulated single top,--,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[180,220]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,9,0,0
+Fitted backgrounds,6.5,1.2,-1.2
+Fitted $WW$,6.3,1.1,-1.1
+Fitted $WZ$,0.13,0.04,-0.04
+Fitted $ZZ$,0.07,0.24,-0.07
+Fitted $t\bar{t}$,--,0,0
+Fitted single top,--,0,0
+Other backgrounds,0.02,0.01,-0.01
+Fake and non-prompt leptons,<0.05,0,0
+Simulated $WW$,5.0,0,0
+Simulated $WZ$,0.11,0,0
+Simulated $ZZ$,0.06,0.21,-0.06
+Simulated $t\bar{t}$,--,0,0
+Simulated single top,--,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$[220,260]$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,0,0,0
+Fitted backgrounds,3.2,0.6,-0.6
+Fitted $WW$,3.0,0.6,-0.6
+Fitted $WZ$,0.07,0.02,-0.02
+Fitted $ZZ$,<0.04,0,0
+Fitted $t\bar{t}$,--,0,0
+Fitted single top,--,0,0
+Other backgrounds,--,0,0
+Fake and non-prompt leptons,0.17,0.02,-0.02
+Simulated $WW$,2.4,0,0
+Simulated $WZ$,0.06,0,0
+Simulated $ZZ$,<0.04,0,0
+Simulated $t\bar{t}$,--,0,0
+Simulated single top,--,0,0
+
+#: $\sqrt{s}$ [GeV],13000
+#: .,$>260$
+Bkg fit results binned DF 0J SRs,.,stat+syst +,stat+syst -
+Observed events,4,0,0
+Fitted backgrounds,2.9,0.5,-0.5
+Fitted $WW$,2.8,0.5,-0.5
+Fitted $WZ$,0.10,0.03,-0.03
+Fitted $ZZ$,0.00,0.07,-0.0
+Fitted $t\bar{t}$,--,0,0
+Fitted single top,--,0,0
+Other backgrounds,--,0,0
+Fake and non-prompt leptons,--,0,0
+Simulated $WW$,2.2,0,0
+Simulated $WZ$,0.08,0,0
+Simulated $ZZ$,<0.04,0,0
+Simulated $t\bar{t}$,--,0,0
+Simulated single top,--,0,0
+
