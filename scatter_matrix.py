@@ -19,13 +19,11 @@ def scatter_matrix(
     refresh_labels=False,
     **kwds
 ):
-	'''
-	Modification of pandas.scatter_matrix.
-	'''
-
-
+    '''
+    Modification of pandas.scatter_matrix.
+    '''
+    
     def _get_marker_compat(marker):
-
         if marker not in mlines.lineMarkers:
             return "o"
         return marker

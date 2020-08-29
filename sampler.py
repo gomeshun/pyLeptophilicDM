@@ -59,10 +59,10 @@ class Sampler:
 
     
     def save(self,fname_base):
-		'''
-		Save MCMC results into "<fname_base>_chain/lnprob/lnlike.npy".
-		If fname_base is like "your_directory/your_prefix", create "your_directory" before saving.
-		'''
+        '''
+        Save MCMC results into "<fname_base>_chain/lnprob/lnlike.npy".
+        If fname_base is like "your_directory/your_prefix", create "your_directory" before saving.
+        '''
         dirname = os.path.dirname(fname_base)
         if dirname == "":
             self._save(fname_base)
