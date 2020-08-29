@@ -22,12 +22,12 @@ __filedir__ = os.path.dirname(__file__) + "/"
 
 #### for collider constraints ####
 hepdata_fname  = __filedir__ + "HEPData-ins1750597-v1-csv.tar.gz"
-hepdata_dir    = __filedir__ + os.path.basename(hepdata_fname).split(".")[0]
+hepdata_dir    = __filedir__ + os.path.basename(hepdata_fname).split(".")[0] + "/"
 
-constraint_l_selectron = __filedir__ + "Exclusioncontour(obs)7.csv"
-constraint_r_selectron = __filedir__ + "Exclusioncontour(obs)8.csv"
-constraint_l_smuon = __filedir__ + "Exclusioncontour(obs)10.csv"
-constraint_r_smuon = __filedir__ + "Exclusioncontour(obs)11.csv"
+constraint_l_selectron = hepdata_dir + "Exclusioncontour(obs)7.csv"
+constraint_r_selectron = hepdata_dir + "Exclusioncontour(obs)8.csv"
+constraint_l_smuon     = hepdata_dir + "Exclusioncontour(obs)10.csv"
+constraint_r_smuon     = hepdata_dir + "Exclusioncontour(obs)11.csv"
 
 hepdict = {
     "slepton" : r"m($\tilde{l}$) [GeV]",
@@ -174,6 +174,15 @@ class LeptophilicDM(Model):
             return Series(ret_dict)
     
     
+    def collider_excludes(self,par_physical):
+        if self.coll_l_selectron.excludes(par_physical["MSLE"],par_physical["Mx"]): return True
+        if self.coll_r_selectron.excludes(par_physical["MSRE"],par_physical["Mx"]): return True
+        if self.coll_l_smuon.excludes(    par_physical["MSLM"],par_physical["Mx"]): return True
+        if self.coll_r_smuon.excludes(    par_physical["MSRM"],par_physical["Mx"]): return True
+        
+        return False
+        
+    
 
     def lnlikelihood(self,array):
         """
@@ -190,16 +199,13 @@ class LeptophilicDM(Model):
         ################
         #time.sleep(1e-1)
         
-        par = self.to_dict(array)
-        par_physical = par_to_phys(par)
-        if par_physical == "unstable": return -inf
+        
+        par_physical = self.to_par_physical(array)
         
         lnl = 0
-        # vacuum stability
         #lnl = stability(???)
         
-        #other constraints....
-        #lnl = ...
+        #other constraints...
         
         return lnl
     
@@ -222,14 +228,17 @@ class LeptophilicDM(Model):
             return -inf
         
         par_physical = self.to_par_physical(array)
-        if par_physical == "unstable": return -inf
+        # vacuum stability
+        if par_physical is "unstable": return -inf
         
-        # LHC constraints
+        # collider constraints
 		# NOTE: This is just an example. It must be updated.
         #if self.lhc_constraints.includes(params[["m_phi_L","m_chi"]].values.reshape(1,-1)):
         #    return -inf
         #if self.lhc_constraints.includes(params[["m_phi_R","m_chi"]].values.reshape(1,-1)):
         #    return -inf
+        
+        if self.collider_excludes(par_physical): return -inf
         
 		# log-prior
         lnps = -np.log(array[prior_type=="log"]) # d(log x) = x^-1 dx = exp(-log x) dx
