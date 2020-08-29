@@ -9,6 +9,9 @@ import numpy as np
 # using gauge transformation set R=a, L=(b,c+di), H=(0,e), where (a,b,c,d,e) are real number.
 
 def search_vacuum1(ml_square,mr_square,A,lamhl1,lamhl2,lamhr):
+    """
+    check that SM vacuum is a local minimum of the potential
+    """
     vev = 246
     mh = 125
     m_tau = 1.777
@@ -97,6 +100,9 @@ def search_vacuum1(ml_square,mr_square,A,lamhl1,lamhl2,lamhr):
         return "stable"
 
 def search_vacuum2(ml_square,mr_square,A,lamhl1,lamhl2,lamhr):
+    """
+    check that 
+    """
     vev = 246
     mh = 125
     m_tau = 1.777

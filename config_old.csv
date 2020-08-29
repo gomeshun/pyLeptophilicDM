@@ -1,6 +1,6 @@
 name,texform,lo,hi,prior
-m2_phi_L,$m^2_{\phi L}$,-9e2,4e6,log
-m2_phi_R,$m^2_{\phi R}$,-9e2,4e6,log
+m_phi_L,$m_{\phi L}$,9e1,2e3,log
+m_phi_R,$m_{\phi R}$,9e1,2e3,log
 m_chi,$m_{\chi}$,1e1,2e3,log
 A,$A$,-2e3,2e3,flat
 y_L,$y_L$,-1,1,flat
