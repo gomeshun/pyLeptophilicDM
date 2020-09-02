@@ -17,11 +17,14 @@ def scatter_matrix(
     plot_axes="all",  # "all", "lower", "upper"
     ylabel_direction=None,  # "left", "right",
     refresh_labels=False,
+    scales=None,  # list of scale ["linear" or "log"]
     **kwds
 ):
     '''
     Modification of pandas.scatter_matrix.
     '''
+    
+    if scales is None: scales = ["linear"] * len(frame.columns)
     
     def _get_marker_compat(marker):
         if marker not in mlines.lineMarkers:
@@ -53,11 +56,16 @@ def scatter_matrix(
     kwds.setdefault("edgecolors", "none")
 
     boundaries_list = []
-    for a in df.columns:
+    for i,a in enumerate(df.columns):
         values = df[a].values[mask[a].values]
         rmin_, rmax_ = np.min(values), np.max(values)
-        rdelta_ext = (rmax_ - rmin_) * range_padding / 2.0
-        boundaries_list.append((rmin_ - rdelta_ext, rmax_ + rdelta_ext))
+        if scales[i]=="linear":
+            rdelta_ext = (rmax_ - rmin_) * range_padding / 2.0
+            boundaries_list.append((rmin_ - rdelta_ext, rmax_ + rdelta_ext))
+        elif scales[i]=="log":
+            rdelta_ext = np.exp((np.log(rmax_) - np.log(rmin_)) * range_padding / 2.0)
+            boundaries_list.append((rmin_ / rdelta_ext, rmax_ * rdelta_ext))
+
 
     for i, a in enumerate(df.columns):
         for j, b in enumerate(df.columns):
@@ -69,7 +77,12 @@ def scatter_matrix(
 
                 # Deal with the diagonal by drawing a histogram there.
                 if diagonal == "hist":
-                    ax.hist(values, **hist_kwds)
+                    if "bins" not in hist_kwds: hist_kwds["bins"]=16
+                    _hist_kwds = {key:val for key,val in hist_kwds.items()}
+                    if scales[i] == "log" and type(hist_kwds["bins"]) is int:
+                        _hist_kwds["bins"] = np.logspace(np.log10(np.min(values)),np.log10(np.max(values)),hist_kwds["bins"])
+                    ax.hist(values,**_hist_kwds)
+                    
 
                 elif diagonal in ("kde", "density"):
                     from scipy.stats import gaussian_kde
@@ -78,7 +91,9 @@ def scatter_matrix(
                     gkde = gaussian_kde(y)
                     ind = np.linspace(y.min(), y.max(), 1000)
                     ax.plot(ind, gkde.evaluate(ind), **density_kwds)
+                   
 
+                ax.set_xscale(scales[i])
                 ax.set_xlim(boundaries_list[i])
                 ax.set_visible(True)
 
@@ -88,6 +103,9 @@ def scatter_matrix(
                 ax.scatter(
                     df[b][common], df[a][common], marker=marker, alpha=alpha, **kwds
                 )
+                
+                ax.set_xscale(scales[j])
+                ax.set_yscale(scales[i])
 
                 ax.set_xlim(boundaries_list[j])
                 ax.set_ylim(boundaries_list[i])

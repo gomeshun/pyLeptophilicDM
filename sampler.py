@@ -75,13 +75,13 @@ class Sampler:
 
 class Analyzer:
     
-    def __init__(self,fname_base,keys,n_skip=0,n_sep=1):
+    def __init__(self,fname_base,keys,n_skipinit=0,n_sep=1):
         self.fname_base = fname_base
         self.keys = keys
         self._chain         = np.load(fname_base+"_chain.npy")
         self._lnprobability = np.load(fname_base+"_lnprob.npy")
         self._lnlike = np.load(fname_base+"_lnlike.npy")
-        self.n_skip = n_skip
+        self.n_skipinit = n_skipinit
         self.n_sep = n_sep
     
     @property
@@ -90,15 +90,15 @@ class Analyzer:
     
     @property
     def chain(self):
-        return self._chain[self.n_skip::self.n_sep,:,:]
+        return self._chain[self.n_skipinit::self.n_sep,:,:]
     
     @property
     def lnprobability(self):
-        return self._lnprobability[self.n_skip::self.n_sep,:]
+        return self._lnprobability[self.n_skipinit::self.n_sep,:]
     
     @property
     def lnlike(self):
-        return self._lnlike[self.n_skip::self.n_sep,:]
+        return self._lnlike[self.n_skipinit::self.n_sep,:]
     
     @property
     def flatchain(self):
