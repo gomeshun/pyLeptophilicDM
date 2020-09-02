@@ -21,13 +21,22 @@ from scipy.stats import norm
 __filedir__ = os.path.dirname(__file__) + "/"
 
 #### for collider constraints ####
-hepdata_fname  = __filedir__ + "HEPData-ins1750597-v1-csv.tar.gz"
-hepdata_dir    = __filedir__ + os.path.basename(hepdata_fname).split(".")[0] + "/"
+hepdata_fname     = __filedir__ + "HEPData-ins1750597-v1-csv.tar.gz"
+hepdata_dir       = __filedir__ + os.path.basename(hepdata_fname).split(".")[0] + "/"
+hepdata_degen_dir = __filedir__ + "coll_degenerated/"
 
-constraint_l_selectron = hepdata_dir + "Exclusioncontour(obs)7.csv"
-constraint_r_selectron = hepdata_dir + "Exclusioncontour(obs)8.csv"
-constraint_l_smuon     = hepdata_dir + "Exclusioncontour(obs)10.csv"
-constraint_r_smuon     = hepdata_dir + "Exclusioncontour(obs)11.csv"
+constraint_se_l  = hepdata_dir + "Exclusioncontour(obs)7.csv"
+constraint_se_r  = hepdata_dir + "Exclusioncontour(obs)8.csv"
+constraint_smu_l = hepdata_dir + "Exclusioncontour(obs)10.csv"
+constraint_smu_r = hepdata_dir + "Exclusioncontour(obs)11.csv"
+
+constraint_se_l_degen      = hepdata_degen_dir + "eL_limit_degen.dat"
+constraint_se_r_degen      = hepdata_degen_dir + "eR_limit_degen.dat"
+constraint_smu_l_degen     = hepdata_degen_dir + "muL_limit_degen.dat"
+constraint_smu_r_degen     = hepdata_degen_dir + "muR_limit_degen.dat"
+constraint_lep_se_r_degen  = hepdata_degen_dir + "LEP_eR.dat"
+constraint_lep_smu_r_degen = hepdata_degen_dir + "LEP_muR.dat"
+
 
 hepdict = {
     "slepton" : r"m($\tilde{l}$) [GeV]",
@@ -42,8 +51,8 @@ mdl_file_paths = glob(__filedir__+"from_taisuke/models/*.mdl")
 
 class Model(metaclass=ABCMeta):
     '''
-	Base class to define models.
-	'''
+    Base class to define models.
+    '''
     
     
     @abstractmethod
@@ -87,21 +96,38 @@ class Model(metaclass=ABCMeta):
         else:
             lnl = self.lnlikelihood(array)
             return lnl+lnp, lnl
-			
+
 
             
 class Collider:
-    def __init__(self,fname):
+    def __init__(self,fname,delim_whitespace=False):
         #### extract HEPData if called for the first time ####
-        if not os.path.exists(hepdata_dir):
-            print(f"{hepdata_dir} does not exist yet. Start unzip {hepdata_fname} ....")
-            subprocess.run(f"tar -xzf {hepdata_fname}",shell=True,cwd=__filedir__,encoding="UTF-8",check=True)
+        # --> disabled (extracted file uploaded on the repository)
+        
+        #if not os.path.exists(hepdata_dir):
+        #    print(f"{hepdata_dir} does not exist yet. Start unzip {hepdata_fname} ....")
+        #    subprocess.run(f"tar -xzf {hepdata_fname}",shell=True,cwd=__filedir__,encoding="UTF-8",check=True)
         
         #points = np.loadtxt(os.path.dirname(__file__)+"/hepdata.89413.v1_t23.csv",delimiter=",")
         #self.lhc_constraints = Polygon(points)  # (x,y) = (slepton mass, neutralino maxx) [GeV]
-        self.points = read_csv(fname,comment="#")
-        self.polygon = Polygon(self.points.values)
+        points = read_csv(fname,comment="#",delim_whitespace=delim_whitespace)
+        self.polygon = Polygon(points.values)
     
+    @property
+    def points(self):
+        return self.polygon.points
+    
+    @property
+    def x(self):
+        return self.polygon.x
+    
+    @property
+    def y(self):
+        return self.polygon.y
+    
+    def reset_points(self,new_points):
+        self.polygon.reset_points(new_points)
+        
     
     def excludes(self,x,y):
         """
@@ -113,14 +139,27 @@ class Collider:
         
 
             
-	 
+
 class LeptophilicDM(Model):
     '''
-	Implementation of Leptophilic DM model.
-	'''
-    def __init__(self,fname):
-        self.config = read_csv(fname)
+    Implementation of Leptophilic DM model.
+    '''
+    def __init__(self,fname,
+                 enable_vacuum_stability = False,
+                 enable_collider_const = False,
+                 enable_micromegas = False,
+                 enable_gm2 = False
+                ):
+        """
+        initialize Leptophilic DM model.
         
+        Note: stablility condition is always enabled. Other conditions (collider, micromegas, g-2) is optional.
+        """
+        self.config = read_csv(fname)
+        self.enable_vacuum_stability = enable_vacuum_stability
+        self.enable_collider_const    = enable_collider_const
+        self.enable_micromegas        = enable_micromegas
+        self.enable_gm2               = enable_gm2
         
         #### initilalize project if called for the first time ####
         mo = PyMicrOmegas()
@@ -136,11 +175,38 @@ class LeptophilicDM(Model):
         self.micromegas = Project("LeptophilicDM")
         
         #### collider constraints ####
-        self.coll_l_selectron = Collider(constraint_l_selectron)
-        self.coll_r_selectron = Collider(constraint_r_selectron)
-        self.coll_l_smuon = Collider(constraint_l_smuon)
-        self.coll_r_smuon = Collider(constraint_r_smuon)
-      
+        self.coll_se_l = Collider(constraint_se_l)
+        self.coll_se_r = Collider(constraint_se_r)
+        self.coll_smu_l = Collider(constraint_smu_l)
+        self.coll_smu_r = Collider(constraint_smu_r)
+        
+        self.coll_se_l_degen      = Collider(constraint_se_l_degen,delim_whitespace=True)
+        self.coll_se_r_degen      = Collider(constraint_se_r_degen,delim_whitespace=True)
+        self.coll_smu_l_degen     = Collider(constraint_smu_l_degen,delim_whitespace=True)
+        self.coll_smu_r_degen     = Collider(constraint_smu_r_degen,delim_whitespace=True)
+        self.coll_lep_se_r_degen  = Collider(constraint_lep_se_r_degen,delim_whitespace=True)
+        self.coll_lep_smu_r_degen = Collider(constraint_lep_smu_r_degen,delim_whitespace=True)
+        
+        # extend collider constraints to mx = 0 (y axis),
+        # otherwise some narrow regions are remained to be un-excluded
+        for coll in [self.coll_se_l,self.coll_se_r,self.coll_smu_l,self.coll_smu_r]:
+            new_points = np.array([
+                [coll.x[0],0],
+                *coll.points,
+                [coll.x[-1],0]
+            ])
+            coll.reset_points(new_points)
+            
+            
+        for coll_degen in [self.coll_se_l_degen,self.coll_se_r_degen,
+                           self.coll_smu_l_degen,self.coll_smu_r_degen,
+                           self.coll_lep_se_r_degen,self.coll_lep_smu_r_degen]:
+            new_points = np.array([
+                [0,coll_degen.y[0]],
+                *coll_degen.points,
+                [0,coll_degen.y[-1]]
+            ])
+            coll_degen.reset_points(new_points)
     
     @property
     def param_names(self):
@@ -157,6 +223,7 @@ class LeptophilicDM(Model):
         make parameter dictionary (Series) from input array.
         """
         return Series(array,index=self.param_names)
+        
     
     def to_par_physical(self,array):
         """
@@ -175,13 +242,33 @@ class LeptophilicDM(Model):
     
     
     def collider_excludes(self,par_physical):
-        if self.coll_l_selectron.excludes(par_physical["MSLE"],par_physical["Mx"]): return True
-        if self.coll_r_selectron.excludes(par_physical["MSRE"],par_physical["Mx"]): return True
-        if self.coll_l_smuon.excludes(    par_physical["MSLM"],par_physical["Mx"]): return True
-        if self.coll_r_smuon.excludes(    par_physical["MSRM"],par_physical["Mx"]): return True
+        m_sle = par_physical["MSLE"]  # left-handed slepton mass
+        m_sre = par_physical["MSRE"]  # right-handed slepton mass
+        m_slm = par_physical["MSLM"]  # left-handed smuon mass
+        m_srm = par_physical["MSRM"]  # right-handed smuon mass
+        m_x   = par_physical["Mx"]    # dark matter mass
+        
+        if self.coll_se_l.excludes(m_sle,m_x): return True
+        if self.coll_se_r.excludes(m_sre,m_x): return True
+        if self.coll_smu_l.excludes(m_slm,m_x): return True
+        if self.coll_smu_r.excludes(m_srm,m_x): return True
+        
+        if self.coll_lep_se_r_degen.excludes(m_sre,m_sre-m_x): return True
+        if self.coll_lep_smu_r_degen.excludes(m_srm,m_srm-m_x): return True
+        if self.coll_se_l_degen.excludes(m_sle,m_sle-m_x): return True
+        if self.coll_se_r_degen.excludes(m_sre,m_sre-m_x): return True
+        if self.coll_smu_l_degen.excludes(m_slm,m_slm-m_x): return True
+        if self.coll_smu_r_degen.excludes(m_srm,m_srm-m_x): return True
+        
         
         return False
+    
+    
+    def consistents_with_relic(self,par_physical):
+        pass
         
+    def lnl_gm2(self,par_physical):
+        pass
     
 
     def lnlikelihood(self,array):
@@ -203,9 +290,9 @@ class LeptophilicDM(Model):
         par_physical = self.to_par_physical(array)
         
         lnl = 0
-        #lnl = stability(???)
         
-        #other constraints...
+        # g-2 constraint
+        if self.enable_gm2: lnl += self.lnl_gm2(par_physical)
         
         return lnl
     
@@ -228,8 +315,9 @@ class LeptophilicDM(Model):
             return -inf
         
         par_physical = self.to_par_physical(array)
+        
         # vacuum stability
-        if par_physical is "unstable": return -inf
+        if self.enable_vacuum_stability and par_physical is "unstable": return -inf
         
         # collider constraints
 		# NOTE: This is just an example. It must be updated.
@@ -238,7 +326,10 @@ class LeptophilicDM(Model):
         #if self.lhc_constraints.includes(params[["m_phi_R","m_chi"]].values.reshape(1,-1)):
         #    return -inf
         
-        if self.collider_excludes(par_physical): return -inf
+        if self.enable_collider_const and self.collider_excludes(par_physical): return -inf
+        
+        # relic density
+        if self.enable_micromegas and not self.consistents_with_relic(par_physical): return -inf
         
 		# log-prior
         lnps = -np.log(array[prior_type=="log"]) # d(log x) = x^-1 dx = exp(-log x) dx

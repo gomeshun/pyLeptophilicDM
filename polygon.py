@@ -7,8 +7,12 @@ class Polygon:
         """
         points: (n,2) ndarray
         """
-        self.points = points
-        
+        self.reset_points(points)
+    
+    @property
+    def points(self):
+        return self._points.copy()
+    
     @property
     def x(self):
         return self.points[:,0]
@@ -16,6 +20,10 @@ class Polygon:
     @property
     def y(self):
         return self.points[:,1]
+    
+    def reset_points(self,new_points):
+        self._points = new_points
+    
     
     
     def includes(self,points):
