@@ -101,7 +101,7 @@ def search_vacuum1(ml_square,mr_square,A,lamhl1,lamhl2,lamhr):
 
 def search_vacuum2(ml_square,mr_square,A,lamhl1,lamhl2,lamhr):
     """
-    check that 
+    check that the VEV of the standard model is really a local minimum of the potential
     """
     vev = 246
     mh = 125
