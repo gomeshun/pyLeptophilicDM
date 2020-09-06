@@ -20,15 +20,19 @@ def diag(x):
 vev = 246
 tau_mass = 1.77
 
-# par = {'m_e_L':0,'m_e_R':0,'m_chi':0,'A':0,'y_L':0,'y_R':0,'laphiLH1':0,'laphiLH2':0,'laphiRH':0}
+# par = {'m2_phi_L':0,'m2_phi_R':0,'m_chi':0,'A':0,'y_L':0,'y_R':0,'laphiLH1':0,'laphiLH2':0,'laphiRH':0}
 # を引数にもち、physical massなどの値を計算して、辞書型で出力する。もともとのparameter数は9個。
 
 def par_to_phys(par):
-
+    """
+    par: input dict. keys:
+        'm2_phi_L','m2_phi_R','m_chi','A' : [GeV]
+        'y_L','y_R','laphiLH1','laphiLH2','laphiRH' : [1]
+    """
     # parameterの読み込み
 
-    m_e_L = par['m_e_L']
-    m_e_R = par['m_e_R']
+    m2_phi_L = par['m2_phi_L']
+    m2_phi_R = par['m2_phi_R'] 
     m_chi   = par['m_chi']
     A       = par['A']
     y_L     = par['y_L']
@@ -37,35 +41,29 @@ def par_to_phys(par):
     laphiLH2= par['laphiLH2']
     laphiRH = par['laphiRH']
 
-    #m_e_Lとm_e_Rからm_phi_Lとm_phi_Rへの変換
-    m_phi_L = m_e_L**2 - (laphiLH1*(vev**2)/2 + laphiLH2*(vev**2)/2)
-    m_phi_R = m_e_R**2 - laphiRH*(vev**2)/2
-
     # massなどの計算
-    mass_mat = diag(np.array([[m_phi_L + laphiLH1*(vev**2)/2 + laphiLH2*(vev**2)/2, A*tau_mass*vev/np.sqrt(2) ],
-                    [A*tau_mass*vev/np.sqrt(2), m_phi_R +laphiRH*(vev**2)/2]]))
+    mass_mat = diag(np.array([[m2_phi_L + laphiLH1*(vev**2)/2 + laphiLH2*(vev**2)/2, A*tau_mass*vev/np.sqrt(2) ],
+                    [A*tau_mass*vev/np.sqrt(2), m2_phi_R +laphiRH*(vev**2)/2]]))
 
 
     Mx = m_chi
-    MSLE = m_phi_L + laphiLH1*(vev**2)/2 + laphiLH2*(vev**2)/2
-    MSRE = m_phi_R + laphiRH*(vev**2)/2
-    MSNE = m_phi_L + laphiLH1*(vev**2)/2 - laphiLH2*(vev**2)/2
+    MSLE = m2_phi_L + laphiLH1*(vev**2)/2 + laphiLH2*(vev**2)/2
+    MSRE = m2_phi_L + laphiRH*(vev**2)/2
+    MSNE = m2_phi_L + laphiLH1*(vev**2)/2 - laphiLH2*(vev**2)/2
 
-    MSLM = m_phi_L + laphiLH1*(vev**2)/2 + laphiLH2*(vev**2)/2
-    MSRM = m_phi_R + laphiRH*(vev**2)/2
-    MSNM = m_phi_L + laphiLH1*(vev**2)/2 - laphiLH2*(vev**2)/2
+    MSLM = m2_phi_L + laphiLH1*(vev**2)/2 + laphiLH2*(vev**2)/2
+    MSRM = m2_phi_L + laphiRH*(vev**2)/2
+    MSNM = m2_phi_L + laphiLH1*(vev**2)/2 - laphiLH2*(vev**2)/2
 
     MSLT = mass_mat[0][0]
     MSRT = mass_mat[0][1]
-    MSNT = m_phi_L + laphiLH1*(vev**2)/2 - laphiLH2*(vev**2)/2
+    MSNT = m2_phi_L + laphiLH1*(vev**2)/2 - laphiLH2*(vev**2)/2
 
-    
-    if min([MSLE,MSRE,MSNE,MSLM,MSRM,MSNM,MSLT,MSRT,MSNT]) < Mx**2 or min([MSLE,MSRE,MSNE,MSLM,MSRM,MSNM,MSLT,MSRT,MSNT,Mx]) < 0:
+    if search_vacuum2(m2_phi_L,m2_phi_R,A,laphiLH1,laphiLH2,laphiRH) == 'unstable' :
         return 'unstable'
-    
-    if search_vacuum2(m_phi_L,m_phi_R,A,laphiLH1,laphiLH2,laphiRH) == 'unstable' :
+
+    elif min([MSLE,MSRE,MSNE,MSLM,MSRM,MSNM,MSLT,MSRT,MSNT]) < Mx**2 or min([MSLE,MSRE,MSNE,MSLM,MSRM,MSNM,MSLT,MSRT,MSNT,Mx]) < 0:
         return 'unstable'
-    
 
     else:
 
