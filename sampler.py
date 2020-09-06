@@ -5,8 +5,11 @@ from pandas import DataFrame
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import pickle
+import gzip
 from .scatter_matrix import scatter_matrix
 from multiprocessing import Pool
+from warnings import warn
 
 
 uses_old_emcee = int(emcee.__version__.split(".")[0]) <= 2
@@ -17,7 +20,7 @@ class Sampler:
     """
     wrapper of emcee.EnsembleSampler. 
     """
-    def __init__(self,lnpost,p0,keys,nwalkers=120):
+    def __init__(self,lnpost,p0,nwalkers=120):
         """
         init
         """
@@ -27,8 +30,7 @@ class Sampler:
         self.sampler = EnsembleSampler(nwalkers,p0.shape[1],lnpost,blobs_dtype=blobs_dtype)  # NOTE: dtype must be list of tuple (not tuple of tuple)
         self.p0 = p0
         self.p_last = p0
-        self.keys = keys
-        self.ndim = len(keys)
+        self.ndim = p0.shape[1]
         
         
     def reset_sampler(self):
@@ -50,12 +52,24 @@ class Sampler:
                 iteration.set_postfix(lnpost_min=np.min(lnposts),lnpost_max=np.max(lnposts),lnpost_mean=np.mean(lnposts))
             if burnin:
                 self.reset_sampler()
-        
-        
+    
+    
+    def get_chain(self,**kwargs):
+        return self.sampler.get_chain(**kwargs)
+    
+    
+    def get_log_prob(self,**kwargs):
+        return self.sampler.get_log_prob(**kwargs)
+    
+    
+    def get_blobs(self,**kwargs):
+        return self.sampler.get_blobs(**kwargs)
+    
+    
     def _save(self,fname_base):
-        np.save(fname_base+"_chain.npy",self.sampler.get_chain())
-        np.save(fname_base+"_lnprob.npy",self.sampler.get_log_prob())
-        np.save(fname_base+"_lnlike.npy",self.sampler.get_blobs())
+        np.save(fname_base+"_chain.npy",self.get_chain())
+        np.save(fname_base+"_lnprob.npy",self.get_log_prob())
+        np.save(fname_base+"_lnlike.npy",self.get_blobs())
 
     
     def save(self,fname_base):
@@ -70,12 +84,48 @@ class Sampler:
             if not os.path.isdir(dirname): os.mkdir(dirname)
             self._save(fname_base)   
         
-    
-    
+        
+    def save_pickle(self,fname_base,overwrite=False):
+        fname = fname_base+'_.gz'
+        if os.path.exists(fname):
+            if overwrite : warn(f"{fname} exsits already. It will be overwritten.")
+            else         : raise RuntimeError(f"{fname} exsits already. If you want to overwrite it, set \"overwrite=True\".")
+        data = pickle.dumps(self)
+        with gzip.open(fname, mode='wb') as fp:
+            fp.write(data)
+            
+
+def load_sampler(fname):
+    """
+    load Sampler from pickled file.
+    """
+    with gzip.open(fname, mode='rb') as fp:
+        data = fp.read()
+    return pickle.loads(data)
+
 
 class Analyzer:
     
-    def __init__(self,fname_base,keys,n_skipinit=0,n_sep=1):
+    def __init__(self,loadtype="pickle",*args,**kwargs):
+        if loadtype == "pickle": 
+            self.load_pickle(*args,**kwargs)
+        elif loadtype == "npy": 
+            self.load_npy_files(*args,**kwargs)
+        else:
+            raise RuntimeError("invalid loadtype")
+
+    
+    def load_pickle(self,fname,keys,n_skipinit=0,n_sep=1):
+        sampler = load_sampler(fname)
+        self.keys =keys
+        self._chain = sampler.get_chain()
+        self._lnprobability = sampler.get_log_prob()
+        self._lnlike = sampler.get_blobs()
+        self.n_skipinit = n_skipinit
+        self.n_sep = n_sep
+    
+    
+    def load_npy_files(self,fname_base,keys,n_skipinit=0,n_sep=1):
         self.fname_base = fname_base
         self.keys = keys
         self._chain         = np.load(fname_base+"_chain.npy")

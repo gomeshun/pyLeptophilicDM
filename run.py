@@ -76,13 +76,14 @@ def run(fname_prefix,
     #idx_mchi = pnames[pnames=="m_phi_R"].index[0]
     #loc[idx_mchi] = 1000
 
-    sampler = Sampler(model.lnposterior,p0,model.param_names,nwalkers)
+    sampler = Sampler(model.lnposterior,p0,nwalkers)
 
     #nsample = 1000
     sampler.sample(nburnin,use_pool=use_pool,burnin=True)
     sampler.sample(nsample,use_pool=use_pool)
 
     sampler.save(fname_prefix)
+    sampler.save_pickle(fname_prefix)
     
     
 if __name__ is "__main__":
