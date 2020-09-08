@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import numpy as np
-from .vacuum_stability import search_vacuum2
+from .vacuum_stability import search_vacuum2, is_local_min
 import sympy
 
 
@@ -63,8 +63,9 @@ def par_to_phys(par):
     if min([MSLE,MSRE,MSNE,MSLM,MSRM,MSNM,MSLT,MSRT,MSNT]) < Mx**2 or min([MSLE,MSRE,MSNE,MSLM,MSRM,MSNM,MSLT,MSRT,MSNT,Mx]) < 0:
         return 'unstable'
     
-    if search_vacuum2(m_phi_L,m_phi_R,A,laphiLH1,laphiLH2,laphiRH) == 'unstable' :
-        return 'unstable'
+    #if search_vacuum2(m_phi_L,m_phi_R,A,laphiLH1,laphiLH2,laphiRH) == 'unstable' :
+    if is_local_min(m_phi_L,m_phi_R,A,laphiLH1,laphiLH2,laphiRH) == 'unstable' :
+         return 'unstable'
     
 
     else:
