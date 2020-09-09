@@ -10,6 +10,7 @@ import gzip
 from .scatter_matrix import scatter_matrix
 from multiprocessing import Pool
 from warnings import warn
+from numpy import inf
 
 
 uses_old_emcee = int(emcee.__version__.split(".")[0]) <= 2
@@ -115,7 +116,7 @@ class Analyzer:
             raise RuntimeError("invalid loadtype")
 
     
-    def load_pickle(self,fname,keys,n_skipinit=0,n_sep=1):
+    def load_pickle(self,fname,keys,n_skipinit=0,n_sep=1,ignore_inf=True):
         sampler = load_sampler(fname)
         self.keys =keys
         self._chain = sampler.get_chain()
@@ -123,9 +124,10 @@ class Analyzer:
         self._lnlike = sampler.get_blobs()
         self.n_skipinit = n_skipinit
         self.n_sep = n_sep
+        self.ignore_inf = ignore_inf
     
     
-    def load_npy_files(self,fname_base,keys,n_skipinit=0,n_sep=1):
+    def load_npy_files(self,fname_base,keys,n_skipinit=0,n_sep=1,ignore_inf=True):
         self.fname_base = fname_base
         self.keys = keys
         self._chain         = np.load(fname_base+"_chain.npy")
@@ -133,6 +135,7 @@ class Analyzer:
         self._lnlike = np.load(fname_base+"_lnlike.npy")
         self.n_skipinit = n_skipinit
         self.n_sep = n_sep
+        self.ignore_inf = ignore_inf
     
     @property
     def ndim(self):
@@ -167,7 +170,7 @@ class Analyzer:
         _df = DataFrame(self.flatchain,columns=self.keys)
         _df["lnprob"] = self.flatlnprobability
         _df["lnlike"] = self.flatlnlike
-        return _df
+        return _df[_df.lnprob>-inf].reset_index(drop=True)
     
     def plot_chain(self,kwargs_subplots={},**kwargs):
         fig,ax = plt.subplots(self.ndim+2,**kwargs_subplots)
