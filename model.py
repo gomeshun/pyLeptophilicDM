@@ -149,10 +149,11 @@ class LeptophilicDM(Model):
     Implementation of Leptophilic DM model.
     '''
     def __init__(self,config_fname,
-                 enable_vacuum_stability = False,
-                 enable_collider_const = False,
-                 enable_micromegas = False,
-                 enable_gm2 = False
+                 enable_vacuum_stability  = False,
+                 enable_collider_const    = False,
+                 enable_micromegas_likeli = False,
+                 enable_micromegas_prior  = False,
+                 enable_gm2               = False
                 ):
         """
         initialize Leptophilic DM model.
@@ -160,10 +161,13 @@ class LeptophilicDM(Model):
         Note: stablility condition is always enabled. Other conditions (collider, micromegas, g-2) is optional.
         """
         self.config = read_csv(config_fname)
-        self.enable_vacuum_stability = enable_vacuum_stability
+        
+        self.enable_vacuum_stability  = enable_vacuum_stability
         self.enable_collider_const    = enable_collider_const
-        self.enable_micromegas        = enable_micromegas
+        self.enable_micromegas_likeli = enable_micromegas_likeli
+        self.enable_micromegas_prior  = enable_micromegas_prior
         self.enable_gm2               = enable_gm2
+        
         
         #### initilalize project if called for the first time ####
         mo = PyMicrOmegas()
@@ -211,6 +215,7 @@ class LeptophilicDM(Model):
                 [0,coll_degen.y[-1]]
             ])
             coll_degen.reset_points(new_points)
+            
     
     @property
     def param_names(self):
@@ -291,7 +296,7 @@ class LeptophilicDM(Model):
         d_ln_omega = max(abs(ln_omega_12 - ln_omega))
         
         if d_ln_omega == 0: return -inf
-        print(dict(loc=ln_omega,scale=d_ln_omega))
+        #print(dict(loc=ln_omega,scale=d_ln_omega))
         return norm.logpdf(ln_omega_obs,loc=ln_omega,scale=d_ln_omega)
         
         
@@ -316,9 +321,11 @@ class LeptophilicDM(Model):
         #time.sleep(1e-1)
         
         
-        par_physical = self.to_par_physical(array)
+        par_physical = self.to_par_physical(array).to_dict()
         
         lnl = 0
+        
+        if self.enable_micromegas_likeli: lnl += self.lnl_relic_abundance(par_physical)
         
         # g-2 constraint
         if self.enable_gm2: lnl += self.lnl_gm2(par_physical)
@@ -358,7 +365,7 @@ class LeptophilicDM(Model):
         if self.enable_collider_const and self.collider_excludes(par_physical): return -inf
         
         # relic density
-        if self.enable_micromegas and not self.consistents_with_relic(par_physical): return -inf
+        if self.enable_micromegas_prior and not self.consistents_with_relic(par_physical): return -inf
         
 		# log-prior
         lnps = -np.log(array[prior_type=="log"]) # d(log x) = x^-1 dx = exp(-log x) dx

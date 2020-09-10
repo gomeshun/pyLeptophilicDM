@@ -16,7 +16,8 @@ def run(fname_prefix,
         nburnin = 100,
         enable_vacuum_stability=False,
         enable_collider_const=False,
-        enable_micromegas=False,
+        enable_micromegas_likeli=False,
+        enable_micromegas_prior=False,
         enable_gm2=False,
         use_pool=False):
     """
@@ -30,14 +31,23 @@ def run(fname_prefix,
     
     file_dir = os.path.dirname(__file__)
     
-    config_int = (2**arange(5) * [enable_vacuum_stability,enable_collider_const,enable_micromegas,enable_gm2,use_pool]).sum()
+    configs = [enable_vacuum_stability,
+               enable_collider_const,
+               enable_micromegas_likeli,
+               enable_micromegas_prior,
+               enable_gm2,
+               use_pool]
+    
+    config_int = (2**arange(len(configs)) * configs).sum()
+    
     fname_prefix += f"_nwalkers={nwalkers}_nsample={nsample}_nburnin={nburnin}_config={config_int}"
 
 
     model = LeptophilicDM(file_dir+"/config.csv",
                           enable_vacuum_stability,
                           enable_collider_const,
-                          enable_micromegas,
+                          enable_micromegas_likeli,
+                          enable_micromegas_prior,
                           enable_gm2)
     #nwalkers = 20
 
