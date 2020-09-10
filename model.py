@@ -1,19 +1,20 @@
+import os
+import subprocess
+from glob import glob
 from abc import ABCMeta, abstractmethod
-from pandas import DataFrame,Series,read_csv
-from numpy import inf, nan
+
 import numpy as np
+from pandas import DataFrame,Series,read_csv
+from numpy import inf, nan, log, log10, exp, abs, min, max
+from scipy.stats import norm
+
+
 from .from_taisuke.py_src.g_minus_2 import log_likelihood_g_minus_2
 from .from_taisuke.py_src.vacuum_stability import stability
 from .from_taisuke.py_src.par_to_phys import par_to_phys
 from .pymicromegas import PyMicrOmegas, Project
-
-import os
-import subprocess
-from glob import glob
-
 from .polygon import Polygon
 
-from scipy.stats import norm
 
 
 
@@ -45,6 +46,9 @@ hepdict = {
 
 #### for micromegas ####
 mdl_file_paths = glob(__filedir__+"from_taisuke/models/*.mdl")
+dof_fname   = __filedir__ + "pymicromegas/eos2020.dat"
+dof_fname_1 = __filedir__ + "pymicromegas/eos2020_err1.dat"
+dof_fname_2 = __filedir__ + "pymicromegas/eos2020_err2.dat"
 
 ################################
 
@@ -144,7 +148,7 @@ class LeptophilicDM(Model):
     '''
     Implementation of Leptophilic DM model.
     '''
-    def __init__(self,fname,
+    def __init__(self,config_fname,
                  enable_vacuum_stability = False,
                  enable_collider_const = False,
                  enable_micromegas = False,
@@ -155,7 +159,7 @@ class LeptophilicDM(Model):
         
         Note: stablility condition is always enabled. Other conditions (collider, micromegas, g-2) is optional.
         """
-        self.config = read_csv(fname)
+        self.config = read_csv(config_fname)
         self.enable_vacuum_stability = enable_vacuum_stability
         self.enable_collider_const    = enable_collider_const
         self.enable_micromegas        = enable_micromegas
@@ -266,6 +270,31 @@ class LeptophilicDM(Model):
     
     def consistents_with_relic(self,par_physical):
         pass
+    
+    
+    def lnl_relic_abundance(self,par_physical):
+        omega_obs = 0.120  # PLANCK(2018) 0.120 += 0.001
+        ln_omega_obs = log(omega_obs)
+        
+        omega   = self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname)["Omega"]
+        if omega < 0: return -inf
+        ln_omega = log(omega)
+        
+        ln_omega_1 = log(self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_1)["Omega"])
+        ln_omega_2 = log(self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_2)["Omega"])
+        ln_omega_12 = [ln_omega_1,ln_omega_2]
+        
+        ln_omega_lo = min(ln_omega_12)
+        ln_omega_hi = max(ln_omega_12)
+        
+        #if not (ln_omega_lo < ln_omega < ln_omega_hi): return -inf
+        d_ln_omega = max(abs(ln_omega_12 - ln_omega))
+        
+        if d_ln_omega == 0: return -inf
+        print(dict(loc=ln_omega,scale=d_ln_omega))
+        return norm.logpdf(ln_omega_obs,loc=ln_omega,scale=d_ln_omega)
+        
+        
         
     def lnl_gm2(self,par_physical):
         pass
