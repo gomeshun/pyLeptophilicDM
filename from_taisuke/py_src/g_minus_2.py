@@ -22,4 +22,12 @@ delta_a_mu = 26.1 * 10**(-10) # diff between experiment and SM
 sigma_a_mu = 8.0 * 10**(-10) # standard deviation of a_mu
 
 def log_likelihood_g_minus_2(mx, ml, mr, A, yl, yr):
+    """
+    mx: DM mass, Mx
+    ml: MSLM
+    mr: MSRM
+    A: A (normalized) <-- from input 
+    yl: y_L or yL
+    yr: y_R or yR
+    """
     return -(a_mu(mx, ml, mr, A, yl, yr)-delta_a_mu)**2/(2*sigma_a_mu**2)
