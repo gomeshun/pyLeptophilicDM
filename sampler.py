@@ -67,6 +67,10 @@ class Sampler:
         return self.sampler.get_blobs(**kwargs)
     
     
+    def get_last_sample(self,**kwargs):
+        return self.sampler.get_last_sample(**kwargs)
+    
+    
     def _save(self,fname_base):
         np.save(fname_base+"_chain.npy",self.get_chain())
         np.save(fname_base+"_lnprob.npy",self.get_log_prob())
