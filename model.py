@@ -49,6 +49,8 @@ mdl_file_paths = glob(__filedir__+"from_taisuke/models/*.mdl")
 dof_fname   = __filedir__ + "pymicromegas/eos2020.dat"
 dof_fname_1 = __filedir__ + "pymicromegas/eos2020_err1.dat"
 dof_fname_2 = __filedir__ + "pymicromegas/eos2020_err2.dat"
+dof_fname_11 = __filedir__ + "pymicromegas/eos2020_err11.dat"
+dof_fname_22 = __filedir__ + "pymicromegas/eos2020_err22.dat"
 
 ################################
 
@@ -274,12 +276,25 @@ class LeptophilicDM(Model):
     
     
     def consistents_with_relic(self,par_physical):
-        pass
-    
+        omega_obs = 0.120  # PLANCK(2018) 0.120 += 0.001
+        
+        par_physical = par_physical.to_dict()
+        omega_11 = self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_11)["Omega"]
+        omega_22 = self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_22)["Omega"]
+        omegas = [omega_11,omega_22]
+        
+        if min(omegas) < 0 : return False 
+        
+        if min(omegas) <= omega_obs <= max(omegas): 
+            return True
+        else:
+            return False
+        
     
     def lnl_relic_abundance(self,par_physical):
         omega_obs = 0.120  # PLANCK(2018) 0.120 += 0.001
         ln_omega_obs = log(omega_obs)
+        par_physical = par_physical.to_dict()
         
         omega   = self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname)["Omega"]
         if omega < 0: return -inf
@@ -321,7 +336,7 @@ class LeptophilicDM(Model):
         #time.sleep(1e-1)
         
         
-        par_physical = self.to_par_physical(array).to_dict()
+        par_physical = self.to_par_physical(array)
         
         lnl = 0
         
