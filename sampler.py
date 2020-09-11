@@ -107,7 +107,21 @@ def load_sampler(fname):
 
 class Analyzer:
     
-    def __init__(self,loadtype="pickle",*args,**kwargs):
+    def __init__(self,*args,**kwargs):
+        """
+        Initialize an Analyzer instance.
+        
+        parameters:
+            loadtype (default: "pickle"):
+                specifing file type from "pickle"/"npy".
+                If "pickle" specified, "fname" must be "XXX.gz" saved by Sampler.
+                If "npy" specified, "fname_base" must be "XXX"(_chain/_lnprob/_lnlike.npy) saved by Sampler.
+                
+            args,kwargs: See "Analyzer.load_pickle" or "Analyzer.load_npy_files".
+        """
+        if "loadtype" not in kwargs:
+            kwargs["loadtype"] = "pickle"
+            
         if loadtype == "pickle": 
             self.load_pickle(*args,**kwargs)
         elif loadtype == "npy": 
