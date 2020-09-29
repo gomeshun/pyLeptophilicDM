@@ -126,6 +126,9 @@ class Analyzer:
         if "loadtype" not in kwargs:
             kwargs["loadtype"] = "pickle"
             
+        loadtype = kwargs["loadtype"]
+        del kwargs["loadtype"]
+            
         if loadtype == "pickle": 
             self.load_pickle(*args,**kwargs)
         elif loadtype == "npy": 
@@ -134,7 +137,7 @@ class Analyzer:
             raise RuntimeError("invalid loadtype")
 
     
-    def load_pickle(self,fname,keys,n_skipinit=0,n_sep=1,ignore_inf=True):
+    def load_pickle(self,fname,keys,n_skipinit=0,n_sep=1,ignore_inf=True,**kwargs):
         sampler = load_sampler(fname)
         self.keys =keys
         self._chain = sampler.get_chain()
@@ -145,7 +148,7 @@ class Analyzer:
         self.ignore_inf = ignore_inf
     
     
-    def load_npy_files(self,fname_base,keys,n_skipinit=0,n_sep=1,ignore_inf=True):
+    def load_npy_files(self,fname_base,keys,n_skipinit=0,n_sep=1,ignore_inf=True,**kwargs):
         self.fname_base = fname_base
         self.keys = keys
         self._chain         = np.load(fname_base+"_chain.npy")

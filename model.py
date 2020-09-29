@@ -35,8 +35,11 @@ constraint_se_l_degen      = hepdata_degen_dir + "eL_limit_degen.dat"
 constraint_se_r_degen      = hepdata_degen_dir + "eR_limit_degen.dat"
 constraint_smu_l_degen     = hepdata_degen_dir + "muL_limit_degen.dat"
 constraint_smu_r_degen     = hepdata_degen_dir + "muR_limit_degen.dat"
-constraint_lep_se_r_degen  = hepdata_degen_dir + "LEP_eR.dat"
-constraint_lep_smu_r_degen = hepdata_degen_dir + "LEP_muR.dat"
+#constraint_lep_se_r_degen  = hepdata_degen_dir + "LEP_eR.dat"
+#constraint_lep_smu_r_degen = hepdata_degen_dir + "LEP_muR.dat"
+
+constraint_lep_se  = hepdata_degen_dir + "LEP_data_eR.dat"
+constraint_lep_smu = hepdata_degen_dir + "LEP_data_muR.dat"
 
 
 hepdict = {
@@ -194,12 +197,15 @@ class LeptophilicDM(Model):
         self.coll_se_r_degen      = Collider(constraint_se_r_degen,delim_whitespace=True)
         self.coll_smu_l_degen     = Collider(constraint_smu_l_degen,delim_whitespace=True)
         self.coll_smu_r_degen     = Collider(constraint_smu_r_degen,delim_whitespace=True)
-        self.coll_lep_se_r_degen  = Collider(constraint_lep_se_r_degen,delim_whitespace=True)
-        self.coll_lep_smu_r_degen = Collider(constraint_lep_smu_r_degen,delim_whitespace=True)
+        
+        self.coll_lep_se  = Collider(constraint_lep_se,delim_whitespace=True)
+        self.coll_lep_smu = Collider(constraint_lep_smu,delim_whitespace=True)
         
         # extend collider constraints to mx = 0 (y axis),
         # otherwise some narrow regions are remained to be un-excluded
-        for coll in [self.coll_se_l,self.coll_se_r,self.coll_smu_l,self.coll_smu_r]:
+        for coll in [self.coll_se_l,self.coll_se_r,
+                     self.coll_smu_l,self.coll_smu_r
+                    ]:
             new_points = np.array([
                 [coll.x[0],0],
                 *coll.points,
@@ -207,10 +213,18 @@ class LeptophilicDM(Model):
             ])
             coll.reset_points(new_points)
             
+        
+        for coll in [self.coll_lep_se,self.coll_lep_smu]:
+            new_points = np.array([
+                [0,0],
+                *coll.points,
+                [coll.x[-1],0]
+            ])
+            coll.reset_points(new_points)
+            
             
         for coll_degen in [self.coll_se_l_degen,self.coll_se_r_degen,
-                           self.coll_smu_l_degen,self.coll_smu_r_degen,
-                           self.coll_lep_se_r_degen,self.coll_lep_smu_r_degen]:
+                           self.coll_smu_l_degen,self.coll_smu_r_degen]:
             new_points = np.array([
                 [0,coll_degen.y[0]],
                 *coll_degen.points,
@@ -264,8 +278,13 @@ class LeptophilicDM(Model):
         if self.coll_smu_l.excludes(m_slm,m_x): return True
         if self.coll_smu_r.excludes(m_srm,m_x): return True
         
-        if self.coll_lep_se_r_degen.excludes(m_sre,m_sre-m_x): return True
-        if self.coll_lep_smu_r_degen.excludes(m_srm,m_srm-m_x): return True
+        #if self.coll_lep_se_r_degen.excludes(m_sre,m_sre-m_x): return True
+        #if self.coll_lep_smu_r_degen.excludes(m_srm,m_srm-m_x): return True
+        if self.coll_lep_se.excludes(m_sle,m_x): return True
+        if self.coll_lep_smu.excludes(m_slm,m_x): return True
+        if self.coll_lep_se.excludes(m_sre,m_x): return True
+        if self.coll_lep_smu.excludes(m_srm,m_x): return True
+        
         if self.coll_se_l_degen.excludes(m_sle,m_sle-m_x): return True
         if self.coll_se_r_degen.excludes(m_sre,m_sre-m_x): return True
         if self.coll_smu_l_degen.excludes(m_slm,m_slm-m_x): return True

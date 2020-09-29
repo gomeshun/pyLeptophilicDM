@@ -41,7 +41,7 @@ def run(fname_prefix,
     config_int = (2**arange(len(configs)) * configs).sum()
     
     fname_prefix += f"_nwalkers={nwalkers}_nsample={nsample}_nburnin={nburnin}_config={config_int}"
-
+    print(f"Results will be exported to {fname_prefix}_.gz")
 
     model = LeptophilicDM(file_dir+"/config.csv",
                           enable_vacuum_stability,
