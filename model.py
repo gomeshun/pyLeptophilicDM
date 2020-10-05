@@ -2,6 +2,7 @@ import os
 import subprocess
 from glob import glob
 from abc import ABCMeta, abstractmethod
+from functools import lru_cache, wraps
 
 import numpy as np
 from pandas import DataFrame,Series,read_csv
@@ -374,7 +375,7 @@ class LeptophilicDM(Model):
         
         par_physical = self.to_par_physical(array)
         if type(par_physical) == str:
-            raise RuntimeError(f"\"par_physical\" is string \"{par_physical}\"" + "\n" + f"\array: {array}")
+            raise RuntimeError(f"\"par_physical\" is string \"{par_physical}\"" + "\n" + f"array: {array}")
         
         lnl = 0
         

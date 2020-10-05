@@ -1,6 +1,9 @@
 #!/usr/bin/python
 import numpy as np
 from matplotlib.pyplot import plot,hist,scatter, show
+from scipy.optimize import minimize
+
+from functools import lru_cache
 # L:stau doublet
 # R:stau singlet
 # H:higgs doublet
@@ -142,8 +145,8 @@ def search_vacuum2(ml_square,mr_square,A,lamhl1,lamhl2,lamhr):
         
         
 
-
-def is_local_min(ml_square,mr_square,A,lamhl1,lamhl2,lamhr,*,n_iter=300):
+@lru_cache(maxsize=1)
+def is_local_min(ml_square,mr_square,A,lamhl1,lamhl2,lamhr,*,n_iter=1000):
     """
     pythonic modification of "search_vacuum2".
     check that the VEV of the standard model is really a local minimum of the potential
@@ -160,6 +163,7 @@ def is_local_min(ml_square,mr_square,A,lamhl1,lamhl2,lamhr,*,n_iter=300):
         return "unstable"
     else: 
         return "stable"
+    
        
         
 def stability(ml_square,mr_square,A,lamhl1,lamhl2,lamhr):
