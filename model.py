@@ -356,6 +356,8 @@ class LeptophilicDM(Model):
         
         
         par_physical = self.to_par_physical(array)
+        if type(par_physical) == str:
+            raise RuntimeError(f"\"par_physical\" is string \"{par_physical}\"" + "\n" + f"\array: {array}")
         
         lnl = 0
         
@@ -387,7 +389,7 @@ class LeptophilicDM(Model):
         par_physical = self.to_par_physical(array)
         
         # vacuum stability
-        if self.enable_vacuum_stability and par_physical is "unstable": return -inf
+        if self.enable_vacuum_stability and isinstance(par_physical,str): return -inf
         
         # collider constraints
 		# NOTE: This is just an example. It must be updated.
