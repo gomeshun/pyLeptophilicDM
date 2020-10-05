@@ -25,7 +25,7 @@ __filedir__ = os.path.dirname(__file__) + "/"
 hepdata_fname      = __filedir__ + "HEPData-ins1750597-v1-csv.tar.gz"  # 13 TeV
 hepdata_fname_8tev = __filedir__ + "EHPData-ins1286761-v1-csv.tar.gz"  #  8 TeV
 hepdata_dir        = __filedir__ + os.path.basename(hepdata_fname).split(".")[0] + "/"
-hepdata_dir_8tev   = __filedir__ + os.path.basename(hepdata_fname_2).split(".")[0] + "/"
+hepdata_dir_8tev   = __filedir__ + os.path.basename(hepdata_fname_8tev).split(".")[0] + "/"
 hepdata_degen_dir  = __filedir__ + "coll_degenerated/"
 
 constraint_se_l  = hepdata_dir + "Exclusioncontour(obs)7.csv"
