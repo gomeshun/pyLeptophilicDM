@@ -353,8 +353,18 @@ class LeptophilicDM(Model):
         
         
         
-    def lnl_gm2(self,par_physical):
-        pass
+    def lnl_gm2(self,array):
+        par = self.to_par(array)
+        par_physical = self.to_par_physical(array)
+        kwargs = {
+            "mx": par_physical["Mx"],
+            "ml": par_physical["MSLM"],
+            "mr": par_physical["MSRM"],
+            "A" : par["A"],
+            "yl": par_physical["yL"],
+            "yr": par_physical["yR"]
+        }
+        return log_likelihood_g_minus_2(**kwargs)
     
 
     def lnlikelihood(self,array):
