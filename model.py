@@ -22,14 +22,21 @@ from .polygon import Polygon
 __filedir__ = os.path.dirname(__file__) + "/"
 
 #### for collider constraints ####
-hepdata_fname     = __filedir__ + "HEPData-ins1750597-v1-csv.tar.gz"
-hepdata_dir       = __filedir__ + os.path.basename(hepdata_fname).split(".")[0] + "/"
-hepdata_degen_dir = __filedir__ + "coll_degenerated/"
+hepdata_fname      = __filedir__ + "HEPData-ins1750597-v1-csv.tar.gz"  # 13 TeV
+hepdata_fname_8tev = __filedir__ + "EHPData-ins1286761-v1-csv.tar.gz"  #  8 TeV
+hepdata_dir        = __filedir__ + os.path.basename(hepdata_fname).split(".")[0] + "/"
+hepdata_dir_8tev   = __filedir__ + os.path.basename(hepdata_fname_2).split(".")[0] + "/"
+hepdata_degen_dir  = __filedir__ + "coll_degenerated/"
 
 constraint_se_l  = hepdata_dir + "Exclusioncontour(obs)7.csv"
 constraint_se_r  = hepdata_dir + "Exclusioncontour(obs)8.csv"
 constraint_smu_l = hepdata_dir + "Exclusioncontour(obs)10.csv"
 constraint_smu_r = hepdata_dir + "Exclusioncontour(obs)11.csv"
+
+constraint_se_l_8tev  = hepdata_dir_8tev + "Table41.csv"
+constraint_se_r_8tev  = hepdata_dir_8tev + "Table39.csv"
+constraint_smu_l_8tev = hepdata_dir_8tev + "Table47.csv"
+constraint_smu_r_8tev = hepdata_dir_8tev + "Table45.csv"
 
 constraint_se_l_degen      = hepdata_degen_dir + "eL_limit_degen.dat"
 constraint_se_r_degen      = hepdata_degen_dir + "eR_limit_degen.dat"
@@ -193,6 +200,11 @@ class LeptophilicDM(Model):
         self.coll_smu_l = Collider(constraint_smu_l)
         self.coll_smu_r = Collider(constraint_smu_r)
         
+        self.coll_se_l_8tev = Collider(constraint_se_l_8tev)
+        self.coll_se_r_8tev = Collider(constraint_se_r_8tev)
+        self.coll_smu_l_8tev = Collider(constraint_smu_l_8tev)
+        self.coll_smu_r_8tev = Collider(constraint_smu_r_8tev)
+        
         self.coll_se_l_degen      = Collider(constraint_se_l_degen,delim_whitespace=True)
         self.coll_se_r_degen      = Collider(constraint_se_r_degen,delim_whitespace=True)
         self.coll_smu_l_degen     = Collider(constraint_smu_l_degen,delim_whitespace=True)
@@ -203,8 +215,8 @@ class LeptophilicDM(Model):
         
         # extend collider constraints to mx = 0 (y axis),
         # otherwise some narrow regions are remained to be un-excluded
-        for coll in [self.coll_se_l,self.coll_se_r,
-                     self.coll_smu_l,self.coll_smu_r
+        for coll in [self.coll_se_l,self.coll_se_r,self.coll_smu_l,self.coll_smu_r,
+                     self.coll_se_l_8tev,self.coll_se_r_8tev,self.coll_smu_l_8tev,self.coll_smu_r_8tev
                     ]:
             new_points = np.array([
                 [coll.x[0],0],
@@ -277,6 +289,11 @@ class LeptophilicDM(Model):
         if self.coll_se_r.excludes(m_sre,m_x): return True
         if self.coll_smu_l.excludes(m_slm,m_x): return True
         if self.coll_smu_r.excludes(m_srm,m_x): return True
+        
+        if self.coll_se_l_8tev.excludes(m_sle,m_x): return True
+        if self.coll_se_r_8tev.excludes(m_sre,m_x): return True
+        if self.coll_smu_l_8tev.excludes(m_slm,m_x): return True
+        if self.coll_smu_r_8tev.excludes(m_srm,m_x): return True
         
         #if self.coll_lep_se_r_degen.excludes(m_sre,m_sre-m_x): return True
         #if self.coll_lep_smu_r_degen.excludes(m_srm,m_srm-m_x): return True

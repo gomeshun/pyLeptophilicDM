@@ -1,0 +1,31 @@
+#: table_doi: 10.17182/hepdata.63216.v1/t80
+#: name: Table 80
+#: description: Central light jets multiplicity in Top CR for SR-Zjets.
+
+#: data_file: Table80.yaml
+#: keyword reactions: P P --> CHARGINO+ CHARGINO- X | P P --> SLEPTON+ SLEPTON- X | P P --> CHARGINO+ NEUTRALINO X
+#: keyword observables: DN/DMULT
+#: keyword phrases: Inclusive | Single Differential Distribution | Proton-Proton Scattering
+#: keyword cmenergies: 8000.0
+#: RE,,,P P --> CHARGINO+ CHARGINO- X,,,
+#: SQRT(S) [GeV],,,8000.0
+#: ,,,data
+Central light jets multiplicity,Central light jets multiplicity LOW,Central light jets multiplicity HIGH,Events / number of Jets,error +,error -
+0.5,0.0,1.0,122.0,11.27,-10.72
+1.5,1.0,2.0,140.0,12.05,-11.51
+2.5,2.0,3.0,69.0,8.55,-8.01
+3.5,3.0,4.0,31.0,5.83,-5.29
+4.5,4.0,5.0,12.0,3.75,-3.21
+5.5,5.0,6.0,4.0,2.33,-1.78
+
+#: RE,,,P P --> CHARGINO+ CHARGINO- X,,,,,
+#: SQRT(S) [GeV],,,8000.0
+#: ,,,bg
+Central light jets multiplicity,Central light jets multiplicity LOW,Central light jets multiplicity HIGH,Events / number of Jets,stat +,stat -,sys +,sys -
+0.5,0.0,1.0,133.53,11.56,-11.56,31.29,-22.13
+1.5,1.0,2.0,138.98,11.79,-11.79,15.66,-16.24
+2.5,2.0,3.0,74.22,8.62,-8.62,12.25,-13.88
+3.5,3.0,4.0,23.23,4.82,-4.82,9.53,-10.85
+4.5,4.0,5.0,7.14,2.67,-2.67,5.46,-6.63
+5.5,5.0,6.0,1.9,1.38,-1.38,2.62,-2.19
+

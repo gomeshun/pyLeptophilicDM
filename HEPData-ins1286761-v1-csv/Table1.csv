@@ -1,0 +1,33 @@
+#: table_doi: 10.17182/hepdata.63216.v1/t1
+#: name: Table 1
+#: description: MT2 in WW CR for SR-WWa.
+
+#: data_file: Table1.yaml
+#: keyword reactions: P P --> CHARGINO+ CHARGINO- X | P P --> SLEPTON+ SLEPTON- X | P P --> CHARGINO+ NEUTRALINO X
+#: keyword observables: DN/DM
+#: keyword phrases: Inclusive | Single Differential Distribution | Proton-Proton Scattering
+#: keyword cmenergies: 8000.0
+#: RE,P P --> CHARGINO+ CHARGINO- X,,,
+#: SQRT(S) [GeV],8000.0
+#: ,data
+MT2 [GEV],Events / 10 GeV,error +,error -
+25.0,0.0,0.0,-0.0
+35.0,9.0,4.1,-2.94
+45.0,51.0,8.19,-7.12
+55.0,148.0,13.19,-12.15
+65.0,197.0,15.06,-14.02
+75.0,53.0,8.32,-7.25
+85.0,3.0,2.91,-1.63
+
+#: RE,P P --> CHARGINO+ CHARGINO- X,,,,,
+#: SQRT(S) [GeV],8000.0
+#: ,bg
+MT2 [GEV],Events / 10 GeV,stat +,stat -,sys +,sys -
+25.0,1.0,0.41,-0.41,0.69,-0.52
+35.0,8.38,1.04,-1.04,2.92,-2.5
+45.0,42.36,2.54,-2.54,11.52,-10.51
+55.0,131.34,3.87,-3.87,30.91,-29.36
+65.0,166.41,5.23,-5.23,39.55,-37.46
+75.0,40.02,1.97,-1.97,10.37,-9.58
+85.0,0.84,0.54,-0.54,0.82,-0.6
+

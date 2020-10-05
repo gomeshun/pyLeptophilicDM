@@ -1,0 +1,30 @@
+#: table_doi: 10.17182/hepdata.63216.v1/t16
+#: name: Table 16
+#: description: Expected 95% CL limit on signal strength for chargino pair production via WW for mN1 = 0 GeV.
+
+#: data_file: Table16.yaml
+#: keyword reactions: P P --> CHARGINO+ CHARGINO- X | P P --> SLEPTON+ SLEPTON- X | P P --> CHARGINO+ NEUTRALINO X
+#: keyword observables: M
+#: keyword phrases: Inclusive | Proton-Proton Scattering
+#: keyword cmenergies: 8000.0
+#: RE,P P --> CHARGINO+ CHARGINO- X
+#: SQRT(S) [GeV],8000.0
+M(CHARGINO1) [GEV],95% CL Limit on SIG/SIG(SUSY)
+100.0,1.02953
+105.0,12.5241
+110.0,12.8857
+120.0,11.9248
+130.0,11.0613
+140.0,11.5009
+150.0,10.707
+160.0,11.7358
+170.0,12.6936
+180.0,12.0392
+190.0,1.35199
+200.0,1.45732
+210.0,1.53803
+220.0,1.59441
+230.0,1.79766
+240.0,2.09638
+250.0,2.19452
+
