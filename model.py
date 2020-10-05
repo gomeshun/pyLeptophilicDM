@@ -23,7 +23,7 @@ __filedir__ = os.path.dirname(__file__) + "/"
 
 #### for collider constraints ####
 hepdata_fname      = __filedir__ + "HEPData-ins1750597-v1-csv.tar.gz"  # 13 TeV
-hepdata_fname_8tev = __filedir__ + "EHPData-ins1286761-v1-csv.tar.gz"  #  8 TeV
+hepdata_fname_8tev = __filedir__ + "HEPData-ins1286761-v1-csv.tar.gz"  #  8 TeV
 hepdata_dir        = __filedir__ + os.path.basename(hepdata_fname).split(".")[0] + "/"
 hepdata_dir_8tev   = __filedir__ + os.path.basename(hepdata_fname_8tev).split(".")[0] + "/"
 hepdata_degen_dir  = __filedir__ + "coll_degenerated/"
