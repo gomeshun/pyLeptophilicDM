@@ -1,0 +1,52 @@
+Leptophilic2
+ Variables
+ Name   | Value       |>  Comment                                   <|
+EE      |0.31333      |Electromagnetic coupling constant (<->1/128)
+GG      |1.117        |Strong coupling constant (Z point)  (PDG-94)
+SW      |0.474        |sin of the Weinberg angle 0.474 - "on-shell",481 - "MS-bar" )
+Q       |100          |Scale of effective running masses
+MW      |80.385       |W boson mass
+Mtp     |172.5        |Top quark pole mass
+McMc    |1.23         |Mc(Mc)  MS-BAR
+MbMb    |4.25         |Mb(Mb)  MS-BAR
+alphaSMZ|0.1184       |Srtong alpha(MZ)
+Ml      |1.777        |mass of tau-lepton
+Mh      |125          |mass of Higgs
+Mx      |125          |mass of DM
+MSRE    |125          |mass of R-selectron
+MSLE    |125          |mass of L-selectron
+MSNE    |125          |mass of sneutrino
+MSRM    |125          |mass of R-selectron
+MSLM    |125          |mass of L-selectron
+MSNM    |125          |mass of sneutrino
+MSRT    |125          |mass of R-selectron
+MSLT    |125          |mass of L-selectron
+MSNT    |125          |mass of sneutrino
+yR      |1            |couplng of R-selectron
+yL      |1            |couplng of L-selectron
+yLT   |1            |yukawa coupling
+yLRT  |1            |yukawa coupling
+yRLT  |1            |yukawa coupling
+yRT   |1            |yukawa coupling
+lamHSLE                       |1        |
+lamHSRE                       |1        |
+lamHSNE                       |1        |
+lamHHSLE                      |1        |
+lamHHSRE                      |1        |
+lamHHSNE                      |1        |
+lamHSLM                       |1        |
+lamHSRM                       |1        |
+lamHSNM                       |1        |
+lamHHSLM                      |1        |
+lamHHSRM                      |1        |
+lamHHSNM                      |1        |
+lamHSLT                       |1        |
+lamHSRLT                      |1        |
+lamHSLRT                      |1        |
+lamHSRT                       |1        |
+lamHSNT                       |1        |
+lamHHSLT                      |1        |
+lamHHSLRT                     |1        |
+lamHHSRLT                     |1        |
+lamHHSRT                      |1        |
+lamHHSNT                      |1        |

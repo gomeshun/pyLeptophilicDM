@@ -1,0 +1,10 @@
+name,texform,lo,hi,prior
+m_e_L,$m_{\tilde{e}_L}$,9e1,550,log
+m_e_R,$m_{\tilde{e}_R}$,9e1,350,log
+m_chi,$m_{\chi}$,1e1,2e3,log
+A,$A$,-2e3,2e3,flat
+y_L,$y_L$,-1,1,flat
+y_R,$y_R$,-1,1,flat
+laphiLH1,$\lambda_{\Phi_L H}^1$,-1,1,flat
+laphiLH2,$\lambda_{\Phi_L H}^2$,-1,1,flat
+laphiRH,$\lambda_{\Phi_R H}$,-1,1,flat

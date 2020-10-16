@@ -166,7 +166,9 @@ class LeptophilicDM(Model):
                  enable_collider_const    = False,
                  enable_micromegas_likeli = False,
                  enable_micromegas_prior  = False,
-                 enable_gm2               = False
+                 enable_gm2               = False,
+                 project_name = "LeptophilicDM",
+                 dir_models   = "/from_taisuke/models"
                 ):
         """
         initialize Leptophilic DM model.
@@ -184,16 +186,16 @@ class LeptophilicDM(Model):
         
         #### initilalize project if called for the first time ####
         mo = PyMicrOmegas()
-        if not mo.project_exists("LeptophilicDM"):
-            micromegas = mo.load_project("LeptophilicDM")  
-            mdl_file_paths = glob(os.path.dirname(__file__) + "/from_taisuke/models/*.mdl")
+        if not mo.project_exists(project_name):
+            micromegas = mo.load_project(project_name)  
+            mdl_file_paths = glob(os.path.dirname(__file__) + f"{dir_models}/*.mdl")
             micromegas.load_mdl_files(mdl_file_paths)
             micromegas.compile()
             
             # initialize project
             print(micromegas({},["OMEGA"]))
     
-        self.micromegas = Project("LeptophilicDM")
+        self.micromegas = Project(project_name)
         
         #### collider constraints ####
         self.coll_se_l = Collider(constraint_se_l)
@@ -438,10 +440,3 @@ class LeptophilicDM(Model):
         
         
 
-
-        
-        
-
-
-        
-        

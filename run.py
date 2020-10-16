@@ -19,7 +19,11 @@ def run(fname_prefix,
         enable_micromegas_likeli=False,
         enable_micromegas_prior=False,
         enable_gm2=False,
-        use_pool=False):
+        use_pool=False,
+        config_fname = "config.csv",
+        project_name = "LeptophilicDM",
+        dir_models = "/from_taisuke/models"
+       ):
     """
     fname_prefix: 
         if like "test", save chains into
@@ -29,7 +33,8 @@ def run(fname_prefix,
         etc.
     """
     
-    file_dir = os.path.dirname(__file__)
+    file_dir = os.path.dirname(__file__) + "/"
+    path_config_fname = file_dir + config_fname
     
     configs = [enable_vacuum_stability,
                enable_collider_const,
@@ -43,12 +48,15 @@ def run(fname_prefix,
     fname_prefix += f"_nwalkers={nwalkers}_nsample={nsample}_nburnin={nburnin}_config={config_int}"
     print(f"Results will be exported to {fname_prefix}_.gz")
 
-    model = LeptophilicDM(file_dir+"/config.csv",
+    model = LeptophilicDM(path_config_fname,
                           enable_vacuum_stability,
                           enable_collider_const,
                           enable_micromegas_likeli,
                           enable_micromegas_prior,
-                          enable_gm2)
+                          enable_gm2,
+                          project_name,
+                          dir_models
+                         )
     #nwalkers = 20
 
     #loc = (model.config.hi.values + model.config.lo.values ) / 2
@@ -60,7 +68,7 @@ def run(fname_prefix,
     
 
     if p0 is None:
-        config = LeptophilicDM("pyleptophilic/config.csv").config
+        config = LeptophilicDM(path_config_fname).config
         adopts_logprior = config.prior=="log"
         _a = config.lo.values
         _b = config.hi.values
@@ -95,6 +103,8 @@ def run(fname_prefix,
     sampler.save(fname_prefix)
     sampler.save_pickle(fname_prefix)
     
+    return sampler
+    
     
 if __name__ is "__main__":
-    main()
+    pass

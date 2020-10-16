@@ -203,6 +203,12 @@ class Analyzer:
         ax[self.ndim+1].plot(self.lnlike,**kwargs) # [nwalkers,nsample,ndim]
         ax[self.ndim+1].set_ylabel("lnlike")
         
+    
+    def plot_lnprob_chain(self,kwargs_subplots={},**kwargs):
+        fig,ax = plt.subplots(**kwargs_subplots)
+        ax.plot(self.lnprobability,**kwargs) # [nwalkers,nsample,ndim]
+        ax.set_ylabel("lnprob")
+        return fig,ax
         
     def plot_hist(self,skip=0,n_sep=1,**kwargs):
         self.df.hist(**kwargs)
