@@ -10,7 +10,7 @@ and other common python packages (numpy, pandas, etc.)
 
 # How to install pyLeptophilicDM
 - install `git` on your computer.
-- 'git clone' this project.
+- `git clone` this project.
 
 # Modules
 ## `model.py`
