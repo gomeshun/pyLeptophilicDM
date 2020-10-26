@@ -6,7 +6,7 @@ from functools import lru_cache, wraps
 
 import numpy as np
 from pandas import DataFrame,Series,read_csv
-from numpy import inf, nan, log, log10, exp, abs, min, max
+from numpy import inf, nan, log, log10, exp, abs, min, max, ndarray
 from scipy.stats import norm
 
 
@@ -113,6 +113,12 @@ class Model(metaclass=ABCMeta):
         else:
             lnl = self.lnlikelihood(array)
             return lnl+lnp, lnl
+        
+        
+        
+        @abstractmethod
+        def blobs_dtype(self):
+            pass
 
 
             
@@ -155,6 +161,14 @@ class Collider:
         return self.polygon.includes(point)[0]  # parameters are excluded when the polygon includes points
         
 
+class Blobs:
+    def __init__(self,blobs_dtype):
+        self.blobs_dtype = blobs_dtype
+        self.val = [np.nan,]*len(blobs_dtype)
+        
+    def __setitem__(self,key):
+        pass
+    
             
 
 class LeptophilicDM(Model):
@@ -258,6 +272,19 @@ class LeptophilicDM(Model):
         return self.config.name
     
     
+    @property
+    def blobs_dtype(self):
+        blobs_dtype = [
+            ("lnlike",float),
+            ("Omega",float),
+            ("lnlike_gm2",float)
+        ]
+        return blobs_dtype
+    
+    def generate_blobs(self):
+        pass
+    
+    
     def to_par(self,array):
         """
         make parameter dictionary (Series) from input array.
@@ -355,9 +382,14 @@ class LeptophilicDM(Model):
         
         
         
-    def lnl_gm2(self,array):
+    def lnl_gm2(self,array,par_physical=None):
+        if type(array) != ndarray:
+            raise RuntimeError(f'array is not numpy.ndarray but {type(array)}')
+        
         par = self.to_par(array)
-        par_physical = self.to_par_physical(array)
+        if par_physical is None:
+            par_physical = self.to_par_physical(array)
+            
         kwargs = {
             "mx": par_physical["Mx"],
             "ml": par_physical["MSLM"],
@@ -394,7 +426,7 @@ class LeptophilicDM(Model):
         if self.enable_micromegas_likeli: lnl += self.lnl_relic_abundance(par_physical)
         
         # g-2 constraint
-        if self.enable_gm2: lnl += self.lnl_gm2(par_physical)
+        if self.enable_gm2: lnl += self.lnl_gm2(array,par_physical)
         
         return lnl
     
