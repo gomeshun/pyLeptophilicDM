@@ -22,7 +22,8 @@ def run(fname_prefix,
         use_pool=False,
         config_fname = "config.csv",
         project_name = "LeptophilicDM",
-        dir_models = "/from_taisuke/models"
+        dir_models = "/from_taisuke/models",
+        overwrite=False
        ):
     """
     fname_prefix: 
@@ -101,7 +102,7 @@ def run(fname_prefix,
     sampler.sample(nsample,use_pool=use_pool)
 
     sampler.save(fname_prefix)
-    sampler.save_pickle(fname_prefix)
+    sampler.save_pickle(fname_prefix,overwrite=overwrite)
     
     return sampler
     
