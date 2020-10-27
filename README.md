@@ -8,6 +8,8 @@ pyLeptophilicDM uses:
 
 and other common python packages (numpy, pandas, etc.)
 
+The developing environment is Anaconda3-2020.02, so it is recomennded to use Anaconda3-2020.02 or newer python environments.
+
 # How to install pyLeptophilicDM
 - install `git` on your computer.
 - `git clone` this project.
