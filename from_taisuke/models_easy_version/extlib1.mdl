@@ -1,0 +1,17 @@
+Standard Model+Leptophlic
+Libraries
+External libraries  and citation                                      <|
+
+%This model implementation was created by:
+%   Taisuke Katayose
+%Emails:
+%   taisuke.katayose@ipmu.jp
+%Model version: 1.0.0
+%Date: 10. 07. 2019
+
+%This prototype is used when LHA support is turned on.
+extern int access(const char *pathname, int mode);                                                                      |
+%-L$HOME/Packages/lhapdf-5.9.1/install/lib -lLHAPDF
+%-L$HOME/Packages/LHAPDF-6.1.5/install/lib -lLHAPDF
+                                                                                            |
+=============================================================================================

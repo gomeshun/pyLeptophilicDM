@@ -1,0 +1,34 @@
+Standard Model+Leptophlic
+ Parameters
+ Name          | Value       |  Comment                                                  |
+ EE            |0.31343      |elecromagnetic constant
+ alfSMZ        |0.1184       |Srtong alpha(MZ) for running mass calculation
+ Q             |100          |scale for running mass calculation
+ s12           |0.221        |Parameter of C-K-M matrix  (PDG96)
+ s23           |0.041        |Parameter of C-K-M matrix  (PDG96)
+ s13           |0.0035       |Parameter of C-K-M matrix  (PDG96)
+ Mm            |0.1057       |muon mass
+ Ml            |1.777        |tau-lepton mass
+ McMc          |1.2          |Mc(Mc)
+ MbMb          |4.25         |Mb(Mb)
+ Mtp           |173.07       |t-quark pole mass
+ MZ            |91.189       |Z-boson mass
+ MW            |80.385       |W-boson mass
+ Mh            |125          |higgs mass
+ wt            |1.59         |t-quark width        (tree level 1->2x)
+ wZ            |2.49444      |Z-boson width        (tree level 1->2x)
+ wW            |2.08895      |W-boson width        (tree level 1->2x)
+ vev   |246          |vacuum expectation value
+ Mx    |124          |mass of DM
+ MSRE  |125          |mass of R-selectron
+ MSLE  |125          |mass of L-selectron
+ MSNE  |125          |mass of sneutrino
+ MSRM  |125          |mass of R-smuon
+ MSLM  |125          |mass of L-smuon
+ MSNM  |125          |mass of sneutrino
+ MSRT  |125          |mass of R-stau
+ MSLT  |125          |mass of L-stau
+ MSNT  |125          |mass of sneutrino
+ yL    |1            |yukawa coupling
+ yR    |1            |yukawa coupling
+==========================================================================================
