@@ -19,6 +19,10 @@ Standard Model+Leptophlic
  wZ            |2.49444      |Z-boson width        (tree level 1->2x)
  wW            |2.08895      |W-boson width        (tree level 1->2x)
  vev   |246          |vacuum expectation value
+ lamHSLE | 246       |
+ lamHSNE | 246       |
+ lamHHSLE | 1       |
+ lamHHSNE | 1       |
  Mx    |124          |mass of DM
  MSRE  |125          |mass of R-selectron
  MSLE  |125          |mass of L-selectron
