@@ -66,7 +66,7 @@ dof_fname_22 = __filedir__ + "pymicromegas/eos2020_err22.dat"
 
 
 
-class LeptophilicDMSimple(Model):
+class LeptophilicDMEasyVersion2(Model):
     '''
     Implementation of Leptophilic DM model.
     '''
