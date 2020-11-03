@@ -1,7 +1,5 @@
 #!/usr/bin/python
 import numpy as np
-import vacuum_stability as vs
-import sympy
 
 
 #SMのinput
