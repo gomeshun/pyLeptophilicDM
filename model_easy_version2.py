@@ -77,7 +77,8 @@ class LeptophilicDMEasyVersion2(Model):
                  enable_micromegas_prior  = False,
                  enable_gm2               = False,
                  project_name = "LeptophilicDM_easy_version2",
-                 dir_models   = "/from_taisuke/models_easy_version2"
+                 dir_models   = "/from_taisuke/models_easy_version2",
+                 fix = None
                 ):
         """
         initialize Leptophilic DM model.
@@ -85,6 +86,7 @@ class LeptophilicDMEasyVersion2(Model):
         Note: stablility condition is always enabled. Other conditions (collider, micromegas, g-2) is optional.
         """
         self.config = read_csv(config_fname,comment="#")
+        self.fix = fix
         
         self.enable_vacuum_stability  = enable_vacuum_stability
         self.enable_collider_const    = enable_collider_const
@@ -186,6 +188,7 @@ class LeptophilicDMEasyVersion2(Model):
         make parameter dictionary (Series) from input array.
         """
         return Series(array,index=self.param_names)
+        
         
     
     def to_par_physical(self,array):
@@ -367,3 +370,22 @@ class LeptophilicDMEasyVersion2(Model):
 		#lnps += np.zeros(array[prior_type=="flat"].shape)
         return np.sum(lnps)
         
+        
+    def to_full_array(self,fixed_array):
+        dim = len(self.config)
+        idx_fixed = [list(self.config.name).index(key) for key in self.fix.keys()]
+        val_fixed = list(self.fix.values())
+        full_array = np.zeros(dim)
+        idx_free = [i for i in range(dim) if (i not in idx_fixed)]
+        full_array[idx_free] = fixed_array
+        full_array[idx_fixed] = val_fixed
+        
+        return full_array
+
+        
+    
+    def lnposterior_fixed(self,array):
+        if self.fix is None:
+            raise RuntimeError("no fix sepcified!")
+            
+        return self.lnposterior(self.to_full_array(array))
