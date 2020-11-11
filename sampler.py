@@ -21,13 +21,13 @@ class Sampler:
     """
     wrapper of emcee.EnsembleSampler. 
     """
-    def __init__(self,lnpost,p0,nwalkers=120):
+    def __init__(self,lnpost,p0,nwalkers=120,blobs_dtype=float):
         """
         init
         """
         
         self.lnpost = lnpost
-        blobs_dtype = float  # Note: Here dtype must be specified, otherwise an error happens. #[("lnlike",float),]
+        blobs_dtype = blobs_dtype  # Note: Here dtype must be specified, otherwise an error happens. #[("lnlike",float),]
         self.sampler = EnsembleSampler(nwalkers,p0.shape[1],lnpost,blobs_dtype=blobs_dtype)  # NOTE: dtype must be list of tuple (not tuple of tuple)
         self.p0 = p0
         self.p_last = p0
@@ -142,7 +142,11 @@ class Analyzer:
         self.keys =keys
         self._chain = sampler.get_chain()
         self._lnprobability = sampler.get_log_prob()
-        self._lnlike = sampler.get_blobs()
+        blobs = sampler.get_blobs()
+        if len(blobs.shape)>1:
+            self._lnlike = blobs["lnlike"]
+        else:
+            self._lnlike = sampler.get_blobs()
         self.n_skipinit = n_skipinit
         self.n_sep = n_sep
         self.ignore_inf = ignore_inf
