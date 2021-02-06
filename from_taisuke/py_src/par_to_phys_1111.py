@@ -24,6 +24,9 @@ def par_to_phys(par):
 
     if min(m_e_L**2 - laphiLH2*(vev**2),m_e_L**2, m_e_R**2) < m_chi**2:
         return 'unstable'
+    
+
+    if abs(laphiLH2) > 1: return 'too large coupling'
 
     else:
 
