@@ -1,0 +1,7 @@
+name,texform,lo,hi,prior
+m_e_L,$m_{\tilde{e}_L}$,9e1,2e3,log
+m_e_R,$m_{\tilde{e}_R}$,9e1,2e3,log
+m_chi,$m_{\chi}$,1,2e3,log
+y_L,$y_L$,-1,1,flat
+y_R,$y_R$,-1,1,flat
+m_nu,$m_\nu$,45,2e3,log
