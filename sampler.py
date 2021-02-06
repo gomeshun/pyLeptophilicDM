@@ -147,6 +147,7 @@ class Analyzer:
             self._lnlike = blobs["lnlike"]
         else:
             self._lnlike = sampler.get_blobs()
+        self.sampler = sampler
         self.n_skipinit = n_skipinit
         self.n_sep = n_sep
         self.ignore_inf = ignore_inf
