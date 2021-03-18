@@ -183,6 +183,9 @@ class LeptophilicDMEqualMass(Model):
     
     
     def to_par(self,array):
+        """
+        assign values for tied parameters
+        """
         par = self._to_par(array)
         par["m_e_R"] = par["m_e_L"]
         par["y_R"] = 2**(1/4) * par["y_L"]
@@ -240,7 +243,6 @@ class LeptophilicDMEqualMass(Model):
         if self.coll_smu_l_degen.excludes(m_slm,m_slm-m_x): return True
         if self.coll_smu_r_degen.excludes(m_srm,m_srm-m_x): return True
         
-        
         return False
     
     
@@ -266,22 +268,27 @@ class LeptophilicDMEqualMass(Model):
         par_physical = par_physical.to_dict()
         
         omega   = self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname)["Omega"]
-        if omega < 0: return (-inf,omega if return_omega else -inf)
-        ln_omega = log(omega)
+        if omega < 0: 
+            lnl = -inf
+        else: 
+            ln_omega = log(omega)
+
+            ln_omega_1 = log(self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_1)["Omega"])
+            ln_omega_2 = log(self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_2)["Omega"])
+            ln_omega_12 = [ln_omega_1,ln_omega_2]
+
+            ln_omega_lo = min(ln_omega_12)
+            ln_omega_hi = max(ln_omega_12)
+
+            #if not (ln_omega_lo < ln_omega < ln_omega_hi): return -inf
+            d_ln_omega = max(abs(ln_omega_12 - ln_omega))
+
+            if d_ln_omega == 0: 
+                lnl = -inf
+            else:
+                #print(dict(loc=ln_omega,scale=d_ln_omega))
+                lnl = norm.logpdf(ln_omega_obs,loc=ln_omega,scale=d_ln_omega)
         
-        ln_omega_1 = log(self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_1)["Omega"])
-        ln_omega_2 = log(self.micromegas(par_physical,flags=["OMEGA"],dof_fname=dof_fname_2)["Omega"])
-        ln_omega_12 = [ln_omega_1,ln_omega_2]
-        
-        ln_omega_lo = min(ln_omega_12)
-        ln_omega_hi = max(ln_omega_12)
-        
-        #if not (ln_omega_lo < ln_omega < ln_omega_hi): return -inf
-        d_ln_omega = max(abs(ln_omega_12 - ln_omega))
-        
-        if d_ln_omega == 0: return -inf
-        #print(dict(loc=ln_omega,scale=d_ln_omega))
-        lnl = norm.logpdf(ln_omega_obs,loc=ln_omega,scale=d_ln_omega)
         if return_omega:
             return lnl,omega
         else:
